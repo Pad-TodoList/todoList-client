@@ -1,0 +1,45 @@
+run-name: Dev workflow - Test and Build
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: "build project"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: init project
+        run: yarn
+
+      - name: build project
+        run: yarn build
+
+  linter:
+    name: "Run project linter"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: init project
+        run: yarn
+
+      - name: linter
+        run: yarn lint
