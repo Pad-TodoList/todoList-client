@@ -11,8 +11,12 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "i18next": "^22.4.11",
+    "i18next-browser-languagedetector": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.1",
+    "react-router-dom": "^6.11.1",
     "vite-tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
