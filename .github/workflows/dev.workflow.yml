@@ -1,4 +1,5 @@
 run-name: Dev workflow - Test and Build
+name: CI/CD
 
 on:
   pull_request:
