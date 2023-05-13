@@ -27,7 +27,7 @@ function Wrapper() {
     <div>
       {view.useCase !== UseCases.None && (
         <div onClick={close} className={styles.modal}>
-          <div onClick={(e) => e.stopPropagation()}>
+          <div className={styles.children} onClick={(e) => e.stopPropagation()}>
             {modals[view.useCase](view.data)}
           </div>
         </div>
