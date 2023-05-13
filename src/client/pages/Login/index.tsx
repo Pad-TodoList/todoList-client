@@ -1,21 +1,26 @@
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useNavigate } from "react-router-dom";
+import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
+import { UseCases } from "@app/wrapper/type.ts";
 
 function Login(_: Props) {
-  const navigate = useNavigate();
+  const { pushView } = useWrapperContext();
   const login = () => {
-    localStorage.setItem("pad-todolist-userId", "id");
-    localStorage.setItem("pad-todolist-userToken", "token");
-    window.location.reload();
-    navigate("/");
+    pushView({ useCase: UseCases.Login, data: { name: "Pad" } });
+  };
+
+  const register = () => {
+    pushView({
+      useCase: UseCases.Register,
+      data: { email: "email", password: "password" },
+    });
   };
 
   return (
     <div className={styles.login}>
       login
       <button onClick={login}>login</button>
-      <button onClick={login}>register</button>
+      <button onClick={register}>register</button>
     </div>
   );
 }

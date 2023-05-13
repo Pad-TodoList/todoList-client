@@ -21,7 +21,8 @@
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/client/app/*"],
-      "@pages/*": ["src/client/pages/*"]
+      "@pages/*": ["src/client/pages/*"],
+      "@scenes/*": ["src/client/scenes/*"]
     }
   },
   "include": ["src"],
