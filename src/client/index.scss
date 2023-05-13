@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   --color-primary: red;
+  --color-white: rgb(255, 255, 255);
 }
 
 a {
@@ -29,7 +30,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1 {
