@@ -19,5 +19,14 @@
       "input_four": "Email",
       "input_five": "Password"
     }
+  },
+  "login": {
+    "title": "Login",
+    "cancel": "Cancel",
+    "send": "Send",
+    "form": {
+      "input_one": "Email",
+      "input_two": "Password"
+    }
   }
 }

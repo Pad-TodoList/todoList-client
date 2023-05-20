@@ -7,7 +7,7 @@ interface ViewModel {
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
   tokens: Tokens;
-  register(user: User): void;
+  login(user: User): void;
 }
 
 function useLogin(): ViewModel {
@@ -27,7 +27,7 @@ function useLogin(): ViewModel {
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
     tokens: tokens,
-    register(user) {
+    login(user) {
       const config = {
         headers: {
           "Content-Type": "application/json",
