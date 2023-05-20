@@ -2,5 +2,22 @@
   "homePage": {
     "title": "Pad-todolist",
     "redirection": "Connection"
+  },
+  "loginPage": {
+    "title": "Connection",
+    "login": "Connection",
+    "register": "Register"
+  },
+  "register": {
+    "title": "Register",
+    "cancel": "Cancel",
+    "send": "Send",
+    "form": {
+      "input_one": "Nickname",
+      "input_two": "Firstname",
+      "input_three": "Lastname",
+      "input_four": "Email",
+      "input_five": "Password"
+    }
   }
 }

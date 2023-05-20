@@ -2,5 +2,22 @@
   "landingPage": {
     "title": "Pad-todolist",
     "redirection": "Se connecter"
+  },
+  "loginPage": {
+    "title": "Se connecter",
+    "login": "Se connecter",
+    "register": "S'enregistrer"
+  },
+  "register": {
+    "title": "S'enregistrer",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "form": {
+      "input_one": "Pseudo",
+      "input_two": "Prénom",
+      "input_three": "Nom de famille",
+      "input_four": "Email",
+      "input_five": "Mot de passe"
+    }
   }
 }
