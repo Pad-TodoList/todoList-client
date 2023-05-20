@@ -1,0 +1,10 @@
+.redirectionButton {
+  border: 2px solid black;
+  border-radius: 12px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

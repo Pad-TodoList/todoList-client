@@ -1,5 +1,6 @@
 {
-  "homePage": {
-    "title": "Page principale"
+  "landingPage": {
+    "title": "Pad-todolist",
+    "redirection": "Se connecter"
   }
 }
