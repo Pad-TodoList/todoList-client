@@ -6,10 +6,8 @@ import { useLogin } from "@todo-list/view-models";
 import { LoginForm } from "./loginForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useNavigate } from "react-router-dom";
 
 function Login(props: Props) {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [user, setUser] = useState<User>({
     email: "",
@@ -30,7 +28,6 @@ function Login(props: Props) {
     if (isRequestSuccess) {
       localStorage.setItem("pad-todolist-userId", tokens.id);
       localStorage.setItem("pad-todolist-userToken", tokens.accessToken);
-      navigate("/");
       window.location.reload();
     }
   }, [isRequestSuccess]);
