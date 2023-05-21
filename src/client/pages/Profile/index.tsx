@@ -18,6 +18,7 @@ function Profile(_: Props) {
   const disconnection = () => {
     localStorage.removeItem("pad-todolist-userId");
     localStorage.removeItem("pad-todolist-userToken");
+    navigate("/");
     window.location.reload();
   };
 
