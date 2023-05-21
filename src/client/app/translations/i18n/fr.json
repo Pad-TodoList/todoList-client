@@ -8,6 +8,9 @@
     "login": "Se connecter",
     "register": "S'enregistrer"
   },
+  "homePage": {
+    "title": "Page principale"
+  },
   "register": {
     "title": "S'enregistrer",
     "cancel": "Annuler",

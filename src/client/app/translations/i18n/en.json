@@ -8,6 +8,9 @@
     "login": "Connection",
     "register": "Register"
   },
+  "homePage": {
+    "title": "Home page"
+  },
   "register": {
     "title": "Register",
     "cancel": "Cancel",
