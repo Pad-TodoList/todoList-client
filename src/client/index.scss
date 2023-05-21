@@ -13,7 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   --color-primary: red;
-  --color-white: rgb(255, 255, 255);
+  --color-white: #ffffff;
+  --color-grey: #808080ff;
+  --color-grey-dark: #494848;
+  --color-grey-light: #b2b0b0;
+  --color-green: #06ea06;
+  --color-red: #ff0000ff;
 }
 
 a {
@@ -27,10 +32,15 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   min-width: 320px;
   min-height: 100vh;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  & > #root {
+    min-height: 100%;
+    min-width: 100%;
+  }
 }
 
 h1 {
