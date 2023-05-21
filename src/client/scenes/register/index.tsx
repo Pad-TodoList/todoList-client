@@ -6,8 +6,10 @@ import { User } from "@todo-list/dto";
 import { RegisterForm } from "./registerForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
+import { useNavigate } from "react-router-dom";
 
 function Register(props: Props) {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [user, setUser] = useState<User>({
     email: "",
@@ -28,6 +30,7 @@ function Register(props: Props) {
     if (isRequestSuccess) {
       localStorage.setItem("pad-todolist-userId", tokens.id);
       localStorage.setItem("pad-todolist-userToken", tokens.accessToken);
+      navigate("/");
       window.location.reload();
     }
   }, [isRequestSuccess]);
