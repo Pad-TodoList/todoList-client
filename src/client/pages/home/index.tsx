@@ -1,9 +1,10 @@
-import { Props } from "./type.ts";
-import styles from "./styles.module.scss";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 import { useGetUser } from "@todo-list/view-models";
-import { useEffect } from "react";
+import styles from "./styles.module.scss";
+import { Props } from "./type.ts";
 
 function Home(_: Props) {
   const { t } = useTranslation();

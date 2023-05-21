@@ -22,7 +22,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: defaultLanguage,
+    lng: localStorage.getItem("pad-todolist-language") || defaultLanguage,
 
     keySeparator: ".",
 

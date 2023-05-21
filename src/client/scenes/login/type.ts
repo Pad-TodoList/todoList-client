@@ -1,5 +1,4 @@
 interface Props {
-  name: string;
   close(): void;
 }
 

@@ -9,13 +9,13 @@ function Login(_: Props) {
   const { pushView } = useWrapperContext();
   const { t } = useTranslation();
   const login = () => {
-    pushView({ useCase: UseCases.Login, data: { name: "Pad" } });
+    pushView({ useCase: UseCases.Login, data: {} });
   };
 
   const register = () => {
     pushView({
       useCase: UseCases.Register,
-      data: { email: "email", password: "password" },
+      data: {},
     });
   };
 

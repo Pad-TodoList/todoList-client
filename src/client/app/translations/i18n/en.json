@@ -1,5 +1,5 @@
 {
-  "homePage": {
+  "landingPage": {
     "title": "Pad-todolist",
     "redirection": "Connection"
   },
@@ -10,6 +10,19 @@
   },
   "homePage": {
     "title": "Home page"
+  },
+  "profilePage": {
+    "title": "Profile",
+    "deleteAccount": "Delete account",
+    "updateAccount": "Update data",
+    "disconnection": "Disconnection",
+    "profileForm": {
+      "update": "Update user données",
+      "input_one": "Nickname",
+      "input_two": "Firstname",
+      "input_three": "Lastname",
+      "input_four": "Email"
+    }
   },
   "register": {
     "title": "Register",
@@ -31,5 +44,11 @@
       "input_one": "Email",
       "input_two": "Password"
     }
+  },
+  "deleteUser": {
+    "title": "Delete your account",
+    "warning": "Are you sure you want to delete your account? This step is irreversible.",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   }
 }
