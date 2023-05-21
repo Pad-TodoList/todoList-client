@@ -1,5 +1,54 @@
 {
+  "landingPage": {
+    "title": "Pad-todolist",
+    "redirection": "Se connecter"
+  },
+  "loginPage": {
+    "title": "Se connecter",
+    "login": "Se connecter",
+    "register": "S'enregistrer"
+  },
   "homePage": {
     "title": "Page principale"
+  },
+  "profilePage": {
+    "title": "Profil",
+    "deleteAccount": "Supprimer profil",
+    "updateAccount": "Modifier les données",
+    "disconnection": "Se déconnecter",
+    "profileForm": {
+      "update": "Modifier les données",
+      "input_one": "Pseudo",
+      "input_two": "Prénom",
+      "input_three": "Nom de famille",
+      "input_four": "Email"
+    }
+  },
+  "register": {
+    "title": "S'enregistrer",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "form": {
+      "input_one": "Pseudo",
+      "input_two": "Prénom",
+      "input_three": "Nom de famille",
+      "input_four": "Email",
+      "input_five": "Mot de passe"
+    }
+  },
+  "login": {
+    "title": "Se connecter",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "form": {
+      "input_one": "Email",
+      "input_two": "Mot de passe"
+    }
+  },
+  "deleteUser": {
+    "title": "Supprimer votre compte",
+    "warning": "Voulez-vous vraiment supprimer votre compte ? Cette étape est irréversible.",
+    "confirm": "Confirmer",
+    "cancel": "Annuler"
   }
 }

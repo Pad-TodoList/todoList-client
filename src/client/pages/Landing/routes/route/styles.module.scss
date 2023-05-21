@@ -1,0 +1,29 @@
+.route {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-grey-light);
+  margin: 1rem 0;
+  padding: 0 1rem;
+  border-radius: 12px;
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 10rem;
+  white-space: nowrap;
+  overflow: auto;
+  gap: 1rem;
+}
+
+.OK {
+  background-color: var(--color-green);
+}
+
+.NOT_OK {
+  background-color: var(--color-red);
+}

@@ -1,11 +1,30 @@
+import { useCheckApi } from "@todo-list/view-models";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Title } from "./title";
+import { Routes } from "./routes";
 
 function Landing(_: Props) {
+  const {
+    checkApi,
+    isRequestFailure,
+    isRequestPending,
+    isRequestSuccess,
+    routes,
+  } = useCheckApi();
+
+  useEffect(() => {
+    checkApi();
+  }, []);
   return (
     <div className={styles.landing}>
-      Landing page, describe the app <Link to={`login`}>login</Link>
+      <Title />
+      <div className={styles.body}>
+        {isRequestPending && <p>loading...</p>}
+        {isRequestFailure.status && <p>{isRequestFailure.message}</p>}
+        {isRequestSuccess && <Routes routes={routes} />}
+      </div>
     </div>
   );
 }

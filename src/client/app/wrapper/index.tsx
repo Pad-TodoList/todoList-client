@@ -1,6 +1,7 @@
 import { useWrapperContext } from "./wrapper";
 import { Register } from "@scenes/register";
 import { Login } from "@scenes/login";
+import { DeleteUser } from "@scenes/deleteUser";
 import { UseCases, ViewModels } from "./type";
 import styles from "./styles.module.scss";
 
@@ -12,14 +13,14 @@ function Wrapper() {
   };
 
   const modals = {
-    [UseCases.Register]: ({
-      email,
-      password,
-    }: ViewModels[UseCases.Register]) => (
-      <Register email={email} password={password} close={close} />
+    [UseCases.Register]: (_: ViewModels[UseCases.Register]) => (
+      <Register close={close} />
     ),
-    [UseCases.Login]: ({ name }: ViewModels[UseCases.Login]) => (
-      <Login name={name} close={close} />
+    [UseCases.Login]: (_: ViewModels[UseCases.Login]) => (
+      <Login close={close} />
+    ),
+    [UseCases.DeleteUser]: ({ user }: ViewModels[UseCases.DeleteUser]) => (
+      <DeleteUser user={user} close={close} />
     ),
   };
 
