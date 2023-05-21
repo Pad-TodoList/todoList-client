@@ -9,8 +9,8 @@ enum UseCases {
 
 interface ViewModels {
   [UseCases.None]: null;
-  [UseCases.Register]: {};
-  [UseCases.Login]: {};
+  [UseCases.Register]: NonNullable<unknown>;
+  [UseCases.Login]: NonNullable<unknown>;
   [UseCases.DeleteUser]: { user: Identifiable<User> };
 }
 

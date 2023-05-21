@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 function RedirectionButton(_: Props) {
   const { t } = useTranslation();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const redirection = () => {
-    let path = `login`;
+    const path = `login`;
     navigate(path);
   };
 
