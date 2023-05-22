@@ -12,7 +12,7 @@ import { Props } from "./type.ts";
 function Private(_: Props) {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/tasks",
       element: <Home />,
       errorElement: <NotFound />,
     },

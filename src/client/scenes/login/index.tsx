@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { createBrowserHistory } from "history";
 
 import { User } from "@todo-list/dto";
 import { useLogin } from "@todo-list/view-models";
@@ -9,6 +10,7 @@ import styles from "./styles.module.scss";
 
 function Login(props: Props) {
   const { t } = useTranslation();
+  const history = createBrowserHistory();
   const [user, setUser] = useState<User>({
     email: "",
     firstName: "",
@@ -28,6 +30,7 @@ function Login(props: Props) {
     if (isRequestSuccess) {
       localStorage.setItem("pad-todolist-userId", tokens.id);
       localStorage.setItem("pad-todolist-userToken", tokens.accessToken);
+      history.push("/tasks");
       window.location.reload();
     }
   }, [isRequestSuccess]);
