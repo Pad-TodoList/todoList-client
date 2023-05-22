@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { useRegister } from "@todo-list/view-models";
 import { User } from "@todo-list/dto";
@@ -9,6 +10,7 @@ import styles from "./styles.module.scss";
 
 function Register(props: Props) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [user, setUser] = useState<User>({
     email: "",
     firstName: "",
@@ -28,6 +30,7 @@ function Register(props: Props) {
     if (isRequestSuccess) {
       localStorage.setItem("pad-todolist-userId", tokens.id);
       localStorage.setItem("pad-todolist-userToken", tokens.accessToken);
+      navigate("/");
       window.location.reload();
     }
   }, [isRequestSuccess]);
