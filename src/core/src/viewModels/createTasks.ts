@@ -1,37 +1,27 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Identifiable, Tokens, User } from "@todo-list/dto";
+import { Task, Tokens } from "@todo-list/dto";
 
 interface ViewModel {
   isRequestSuccess: boolean;
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
-  user: Identifiable<User>;
-  getUser(accessTokens: Tokens): void;
+  createTask(accessTokens: Tokens, task: Task): void;
 }
 
-function useGetUser(): ViewModel {
+function useCreateTask(): ViewModel {
   const [isRequestSuccess, setIsRequestSuccess] = useState(false);
   const [isRequestFailure, setIsRequestFailure] = useState({
     status: false,
     message: "",
   });
   const [isRequestPending, setIsRequestPending] = useState(false);
-  const [user, setUser] = useState<Identifiable<User>>({
-    email: "",
-    firstName: "",
-    lastName: "",
-    nickName: "",
-    password: "",
-    uuid: "",
-  });
 
   return {
     isRequestFailure: isRequestFailure,
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
-    user: user,
-    getUser(accessTokens) {
+    createTask(accessTokens: Tokens, task: Task) {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -41,21 +31,16 @@ function useGetUser(): ViewModel {
       setIsRequestSuccess(false);
       setIsRequestFailure({ status: false, message: "" });
       setIsRequestPending(true);
+      const formData = new FormData();
+      formData.append("name", task.name);
+      formData.append("description", task.description);
+      formData.append("startDate", task.startDate);
+      formData.append("endDate", task.endDate);
+      formData.append("status", task.status);
+      formData.append("userId", task.userId);
 
-      clientHttp(
-        "/user/get/" + accessTokens.id,
-        RequestMethods.GET,
-        config.headers
-      )
-        .then((response) => {
-          setUser({
-            email: response.data.email,
-            firstName: response.data.firstname,
-            lastName: response.data.lastname,
-            nickName: response.data.nickname,
-            password: response.data.password,
-            uuid: response.data.id,
-          });
+      clientHttp("/task/create", RequestMethods.POST, config.headers, formData)
+        .then(() => {
           setIsRequestSuccess(true);
           setIsRequestFailure({ status: false, message: "" });
           setIsRequestPending(false);
@@ -69,4 +54,4 @@ function useGetUser(): ViewModel {
   };
 }
 
-export { useGetUser };
+export { useCreateTask };

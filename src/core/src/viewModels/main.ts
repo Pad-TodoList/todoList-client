@@ -4,3 +4,5 @@ export * from "./login.ts";
 export * from "./getUser.ts";
 export * from "./deleteUser.ts";
 export * from "./updateUser.ts";
+export * from "./getUserTasks.ts";
+export * from "./createTasks.ts";

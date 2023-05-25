@@ -5,6 +5,7 @@ enum UseCases {
   Register,
   Login,
   DeleteUser,
+  CreateTask,
 }
 
 interface ViewModels {
@@ -12,6 +13,7 @@ interface ViewModels {
   [UseCases.Register]: NonNullable<unknown>;
   [UseCases.Login]: NonNullable<unknown>;
   [UseCases.DeleteUser]: { user: Identifiable<User> };
+  [UseCases.CreateTask]: NonNullable<unknown>;
 }
 
 export { UseCases, ViewModels };

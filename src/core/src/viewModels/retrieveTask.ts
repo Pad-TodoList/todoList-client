@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Identifiable, Tokens, User } from "@todo-list/dto";
+import { Id, Identifiable, Task, Tokens } from "@todo-list/dto";
+import { response } from "express";
 
 interface ViewModel {
   isRequestSuccess: boolean;
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
-  user: Identifiable<User>;
-  getUser(accessTokens: Tokens): void;
+  task: Identifiable<Task>;
+  retrieveTask(accessTokens: Tokens, id: Id): void;
 }
 
-function useGetUser(): ViewModel {
+function useRetrieveTask(): ViewModel {
   const [isRequestSuccess, setIsRequestSuccess] = useState(false);
   const [isRequestFailure, setIsRequestFailure] = useState({
     status: false,
     message: "",
   });
   const [isRequestPending, setIsRequestPending] = useState(false);
-  const [user, setUser] = useState<Identifiable<User>>({
-    email: "",
-    firstName: "",
-    lastName: "",
-    nickName: "",
-    password: "",
+  const [task, setTask] = useState<Identifiable<Task>>({
+    description: "",
+    endDate: "",
+    name: "",
+    startDate: "",
+    status: "",
+    userId: "",
     uuid: "",
   });
 
@@ -30,8 +32,8 @@ function useGetUser(): ViewModel {
     isRequestFailure: isRequestFailure,
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
-    user: user,
-    getUser(accessTokens) {
+    task: task,
+    retrieveTask(accessTokens: Tokens, id: Id) {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -42,18 +44,15 @@ function useGetUser(): ViewModel {
       setIsRequestFailure({ status: false, message: "" });
       setIsRequestPending(true);
 
-      clientHttp(
-        "/user/get/" + accessTokens.id,
-        RequestMethods.GET,
-        config.headers
-      )
+      clientHttp("/task/get/" + id, RequestMethods.GET, config.headers)
         .then((response) => {
-          setUser({
-            email: response.data.email,
-            firstName: response.data.firstname,
-            lastName: response.data.lastname,
-            nickName: response.data.nickname,
-            password: response.data.password,
+          setTask({
+            name: response.data.name,
+            description: response.data.description,
+            startDate: response.data.startDate,
+            endDate: response.data.endDate,
+            status: response.data.status,
+            userId: response.data.userId,
             uuid: response.data.id,
           });
           setIsRequestSuccess(true);
@@ -69,4 +68,4 @@ function useGetUser(): ViewModel {
   };
 }
 
-export { useGetUser };
+export { useRetrieveTask };
