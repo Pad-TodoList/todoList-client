@@ -7,11 +7,10 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
     open: false,
-    host: "localhost",
     port: 3000,
     proxy: {
       "/api": {
-        target: "https://todolist-fullstack.onrender.com",
+        target: process.env.VITE_API_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },

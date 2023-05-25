@@ -21,7 +21,7 @@ function clientHttp(
     data: data,
     headers: header,
     method: method,
-    url: import.meta.env.VITE_API_URL + endPoint,
+    url: "/api" + endPoint,
   });
 }
 

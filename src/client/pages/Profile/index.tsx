@@ -29,7 +29,7 @@ function Profile(_: Props) {
 
   useEffect(() => {
     getUser({
-      accessToken: localStorage.getItem("pad-todolist-accessToken") ?? "",
+      accessToken: localStorage.getItem("pad-todolist-userToken") ?? "",
       id: localStorage.getItem("pad-todolist-userId") ?? "",
     });
   }, []);

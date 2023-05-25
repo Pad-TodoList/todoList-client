@@ -32,6 +32,7 @@ function useGetUser(): ViewModel {
     isRequestSuccess: isRequestSuccess,
     user: user,
     getUser(accessTokens) {
+      console.log(accessTokens);
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +44,7 @@ function useGetUser(): ViewModel {
       setIsRequestPending(true);
 
       clientHttp(
-        "/getUser/" + accessTokens.id,
+        "/user/get/" + accessTokens.id,
         RequestMethods.GET,
         config.headers
       )
