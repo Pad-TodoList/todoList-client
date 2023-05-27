@@ -3,11 +3,13 @@ import styles from "./styles.module.scss";
 import { useState } from "react";
 import { useUpdateUser } from "@todo-list/view-models";
 import { useTranslation } from "react-i18next";
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 
 function ProfileForm(props: Props) {
   const { t } = useTranslation();
   const [updatedUser, setUpdatedUser] = useState(props.user);
   const { updateUser, isRequestFailure, isRequestPending } = useUpdateUser();
+  const tokens = getAccessToken();
   return (
     <div className={styles.profileForm}>
       <div>
@@ -48,13 +50,7 @@ function ProfileForm(props: Props) {
         />
       </div>
       <button
-        onClick={() =>
-          !isRequestPending &&
-          updateUser(updatedUser, {
-            accessToken: localStorage.getItem("pad-todolist-accessToken") ?? "",
-            id: localStorage.getItem("pad-todolist-userId") ?? "",
-          })
-        }
+        onClick={() => !isRequestPending && updateUser(updatedUser, tokens)}
       >
         {t("profilePage.profileForm.update")}
       </button>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
 import { Id, Identifiable, Task, Tokens } from "@todo-list/dto";
-import { response } from "express";
 
 interface ViewModel {
   isRequestSuccess: boolean;

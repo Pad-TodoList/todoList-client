@@ -49,7 +49,14 @@ function Home(_: Props) {
       ) : (
         <div>
           {tasks.map((task) => (
-            <div key={task.uuid}>{task.name}</div>
+            <div
+              onClick={() =>
+                pushView({ data: { task }, useCase: UseCases.RetrieveTask })
+              }
+              key={task.uuid}
+            >
+              {task.name}
+            </div>
           ))}
         </div>
       )}

@@ -1,4 +1,4 @@
-import { Identifiable, User } from "@todo-list/dto";
+import { Identifiable, Task, User } from "@todo-list/dto";
 
 enum UseCases {
   None,
@@ -6,6 +6,7 @@ enum UseCases {
   Login,
   DeleteUser,
   CreateTask,
+  RetrieveTask,
 }
 
 interface ViewModels {
@@ -14,6 +15,7 @@ interface ViewModels {
   [UseCases.Login]: NonNullable<unknown>;
   [UseCases.DeleteUser]: { user: Identifiable<User> };
   [UseCases.CreateTask]: NonNullable<unknown>;
+  [UseCases.RetrieveTask]: { task: Identifiable<Task> };
 }
 
 export { UseCases, ViewModels };

@@ -6,3 +6,5 @@ export * from "./deleteUser.ts";
 export * from "./updateUser.ts";
 export * from "./getUserTasks.ts";
 export * from "./createTasks.ts";
+export * from "./deleteTask.ts";
+export * from "./updateTask.ts";
