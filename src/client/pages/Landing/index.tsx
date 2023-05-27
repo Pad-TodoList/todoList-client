@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+
 import { useCheckApi } from "@todo-list/view-models";
+import { Loader } from "@common/loader";
+import { Title } from "./title";
+import { SelectLanguage } from "./selectLanguage";
+import { Routes } from "./routes";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useEffect } from "react";
-import { Title } from "./title";
-import { Routes } from "./routes";
 
 function Landing(_: Props) {
   const {
@@ -17,14 +20,16 @@ function Landing(_: Props) {
   useEffect(() => {
     checkApi();
   }, []);
+
   return (
     <div className={styles.landing}>
       <Title />
       <div className={styles.body}>
-        {isRequestPending && <p>loading...</p>}
+        {isRequestPending && <Loader />}
         {isRequestFailure.status && <p>{isRequestFailure.message}</p>}
         {isRequestSuccess && <Routes routes={routes} />}
       </div>
+      <SelectLanguage />
     </div>
   );
 }
