@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Tokens } from "@todo-list/dto";
+import { Identifiable, Task, Tokens } from "@todo-list/dto";
 
 interface ViewModel {
   isRequestSuccess: boolean;
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
-  deleteUser(accessTokens: Tokens): void;
+  updateTask(task: Identifiable<Task>, tokens: Tokens): void;
 }
 
-function useDeleteUser(): ViewModel {
+function useUpdateTask(): ViewModel {
   const [isRequestSuccess, setIsRequestSuccess] = useState(false);
   const [isRequestFailure, setIsRequestFailure] = useState({
     status: false,
@@ -21,22 +21,26 @@ function useDeleteUser(): ViewModel {
     isRequestFailure: isRequestFailure,
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
-    deleteUser(accessTokens) {
+    updateTask(task, tokens) {
       const config = {
         headers: {
           "Content-Type": "application/json",
-          accessToken: accessTokens.accessToken,
+          accessToken: tokens.accessToken,
         },
       };
       setIsRequestSuccess(false);
       setIsRequestFailure({ status: false, message: "" });
       setIsRequestPending(true);
+      const formData = new FormData();
+      formData.append("name", task.name);
+      formData.append("description", task.description);
+      formData.append("startDate", task.startDate);
+      formData.append("endDate", task.endDate);
+      formData.append("status", task.status);
+      formData.append("userId", task.userId);
+      formData.append("id", task.uuid);
 
-      clientHttp(
-        "/user/delete/" + accessTokens.id,
-        RequestMethods.DELETE,
-        config.headers
-      )
+      clientHttp("/task/update", RequestMethods.PUT, config.headers, formData)
         .then(() => {
           setIsRequestSuccess(true);
           setIsRequestFailure({ status: false, message: "" });
@@ -51,4 +55,4 @@ function useDeleteUser(): ViewModel {
   };
 }
 
-export { useDeleteUser };
+export { useUpdateTask };

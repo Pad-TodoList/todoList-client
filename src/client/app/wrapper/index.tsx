@@ -4,6 +4,8 @@ import { Login } from "@scenes/login";
 import { DeleteUser } from "@scenes/deleteUser";
 import { UseCases, ViewModels } from "./type";
 import styles from "./styles.module.scss";
+import { CreateTask } from "@scenes/createTask";
+import { RetrieveTask } from "@scenes/retrieveTask";
 
 function Wrapper() {
   const { view, pushView } = useWrapperContext();
@@ -21,6 +23,12 @@ function Wrapper() {
     ),
     [UseCases.DeleteUser]: ({ user }: ViewModels[UseCases.DeleteUser]) => (
       <DeleteUser user={user} close={close} />
+    ),
+    [UseCases.CreateTask]: (_: ViewModels[UseCases.CreateTask]) => (
+      <CreateTask close={close} />
+    ),
+    [UseCases.RetrieveTask]: ({ task }: ViewModels[UseCases.RetrieveTask]) => (
+      <RetrieveTask close={close} task={task} />
     ),
   };
 

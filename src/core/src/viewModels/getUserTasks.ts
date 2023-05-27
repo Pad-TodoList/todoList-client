@@ -1,27 +1,30 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Tokens } from "@todo-list/dto";
+import { Identifiable, Task, Tokens } from "@todo-list/dto";
 
 interface ViewModel {
   isRequestSuccess: boolean;
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
-  deleteUser(accessTokens: Tokens): void;
+  tasks: Identifiable<Task>[];
+  getUserTasks(accessTokens: Tokens): void;
 }
 
-function useDeleteUser(): ViewModel {
+function useGetUserTasks(): ViewModel {
   const [isRequestSuccess, setIsRequestSuccess] = useState(false);
   const [isRequestFailure, setIsRequestFailure] = useState({
     status: false,
     message: "",
   });
   const [isRequestPending, setIsRequestPending] = useState(false);
+  const [tasks, setTasks] = useState<Identifiable<Task>[]>([]);
 
   return {
     isRequestFailure: isRequestFailure,
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
-    deleteUser(accessTokens) {
+    tasks: tasks,
+    getUserTasks(accessTokens) {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -33,11 +36,27 @@ function useDeleteUser(): ViewModel {
       setIsRequestPending(true);
 
       clientHttp(
-        "/user/delete/" + accessTokens.id,
-        RequestMethods.DELETE,
+        "/task/getUser/" + accessTokens.id,
+        RequestMethods.GET,
         config.headers
       )
-        .then(() => {
+        .then((response) => {
+          if (response.data) {
+            const responseTasks: Identifiable<Task>[] = response.data.map(
+              (item: any) => {
+                return {
+                  name: item.name,
+                  description: item.description,
+                  startDate: item.startDate,
+                  endDate: item.endDate,
+                  status: item.status,
+                  userId: item.userId,
+                  uuid: item.id,
+                };
+              }
+            );
+            setTasks(responseTasks);
+          }
           setIsRequestSuccess(true);
           setIsRequestFailure({ status: false, message: "" });
           setIsRequestPending(false);
@@ -51,4 +70,4 @@ function useDeleteUser(): ViewModel {
   };
 }
 
-export { useDeleteUser };
+export { useGetUserTasks };
