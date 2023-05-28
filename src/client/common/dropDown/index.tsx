@@ -16,6 +16,7 @@ function useOutsideAlerter(ref: any, close: any) {
     };
   }, [ref]);
 }
+
 function DropDown({ button, list }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);

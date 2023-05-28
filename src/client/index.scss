@@ -20,6 +20,7 @@
   --color-grey-light: #b2b0b0;
   --color-green: #06ea06;
   --color-red: #ff0000ff;
+  --color-black: #000000;
 }
 
 a {
@@ -47,6 +48,10 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+p {
+  margin: 0;
 }
 
 @media (prefers-color-scheme: light) {

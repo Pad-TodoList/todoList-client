@@ -1,7 +1,12 @@
 {
   "landingPage": {
     "title": "Pad-todolist",
-    "redirection": "Se connecter"
+    "redirection": "Se connecter",
+    "selectLanguage": {
+      "title": "Séléctionner la langue",
+      "french": "Français",
+      "english": "Anglais"
+    }
   },
   "loginPage": {
     "title": "Se connecter",

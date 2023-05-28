@@ -1,7 +1,59 @@
 .selectLanguage {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   margin-top: 3rem;
   margin-left: 3rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--color-white);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: rgba(178, 176, 176, 0.55);
+  padding: 0.5rem;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(178, 176, 176, 0.55);
+  padding: 1rem;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.language {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: 0.3rem;
+
+  &:hover {
+    background-color: rgba(178, 176, 176, 0.24);
+  }
+}
+
+.englishFlagIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.frenchFlagIcon {
+  width: 1rem;
+  height: 1rem;
 }
