@@ -1,7 +1,8 @@
+import { useTranslation } from "react-i18next";
+
+import { RedirectionButton } from "./redirectionButton";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { useTranslation } from "react-i18next";
-import { RedirectionButton } from "./redirectionButton";
 
 function Title(_: Props) {
   const { t } = useTranslation();
