@@ -4,4 +4,40 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  color: var(--color-white);
+  margin-top: 3rem;
+}
+
+.body {
+  width: 50%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 4rem;
+  flex-direction: column;
+}
+
+.links {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.link {
+  color: var(--color-white);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.presentation {
+  margin-top: 3rem;
+}
+
+.redirectButtonBox {
+  display: flex;
+  justify-content: center;
 }

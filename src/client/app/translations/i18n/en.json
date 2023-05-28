@@ -2,6 +2,14 @@
   "landingPage": {
     "title": "Pad-todolist",
     "redirection": "Connection",
+    "presentation": {
+      "title": "I am Pierre-Alexandre delgado, student at Epitech Paris and currently at San Francisco State University. This web application is a task management tool like Trello. I am currently looking for an internship in South Korea or Japan. I am very interested in fullstack development, devops, Android development and machine learning. You can contact me at the following address: ",
+      "mail": "pierre-alexandre.delgado-arevalo@epitech.eu",
+      "githubTitle": "Github",
+      "linkedinTitle": "Linkedin",
+      "githubContent": "https://github.com/TheRealPad",
+      "linkedinContent": "https://www.linkedin.com/in/pierre-alexandre-delgado-106b81202/"
+    },
     "selectLanguage": {
       "title": "Select language",
       "french": "French",
