@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import { useCheckApi } from "@todo-list/view-models";
 import { Loader } from "@common/loader";
+import { ErrorServer } from "./errorServer";
 import { Title } from "./title";
 import { SelectLanguage } from "./selectLanguage";
 import { Routes } from "./routes";
@@ -26,7 +27,7 @@ function Landing(_: Props) {
       <Title />
       <div className={styles.body}>
         {isRequestPending && <Loader />}
-        {isRequestFailure.status && <p>{isRequestFailure.message}</p>}
+        {isRequestFailure.status && <ErrorServer />}
         {isRequestSuccess && <Routes routes={routes} />}
       </div>
       <SelectLanguage />

@@ -1,6 +1,6 @@
+import { Route } from "./route";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { Route } from "./route";
 
 function Routes(props: Props) {
   return (

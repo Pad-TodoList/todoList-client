@@ -9,21 +9,59 @@
   border-radius: 5px;
 }
 
-.status {
-  display: flex;
-  flex-direction: row;
+.description {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  width: 10rem;
-  white-space: nowrap;
-  overflow: auto;
   gap: 1rem;
 }
 
-.OK {
-  background-color: var(--color-green);
+.method {
+  margin: 0.3rem;
+  padding: 0.3rem 1rem;
+  color: var(--color-white);
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 4rem;
+  text-align: center;
 }
 
-.NOT_OK {
-  background-color: var(--color-red);
+.POST {
+  border: 2px solid green;
+  background-color: rgba(0, 128, 0, 0.5);
+
+  .method {
+    background-color: green;
+  }
+}
+
+.GET {
+  border: 2px solid blue;
+  background-color: rgba(0, 0, 255, 0.5);
+
+  .method {
+    background-color: blue;
+  }
+}
+
+.DELETE {
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.5);
+
+  .method {
+    background-color: red;
+  }
+}
+
+.PUT {
+  border: 2px solid orange;
+  background-color: rgba(255, 165, 0, 0.5);
+
+  .method {
+    background-color: orange;
+  }
+}
+
+.path {
+  font-weight: bolder;
 }
