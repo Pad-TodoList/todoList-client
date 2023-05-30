@@ -1,0 +1,30 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000;
+  margin-right: 5px;
+  animation: dot-animation 1.5s infinite;
+}
+
+@keyframes dot-animation {
+  0% { opacity: 0; }
+  33% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 1s;
+}
