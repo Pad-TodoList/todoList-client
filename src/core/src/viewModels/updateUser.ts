@@ -39,7 +39,7 @@ function useUpdateUser(): ViewModel {
       formData.append("password", user.password);
       formData.append("id", user.uuid);
 
-      clientHttp("/updateUser", RequestMethods.PUT, config.headers, formData)
+      clientHttp("/user/update", RequestMethods.PUT, config.headers, formData)
         .then((response) => {
           console.log(response.data);
           setIsRequestSuccess(true);

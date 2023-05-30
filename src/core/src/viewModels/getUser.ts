@@ -32,7 +32,6 @@ function useGetUser(): ViewModel {
     isRequestSuccess: isRequestSuccess,
     user: user,
     getUser(accessTokens) {
-      console.log(accessTokens);
       const config = {
         headers: {
           "Content-Type": "application/json",

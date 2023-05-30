@@ -5,20 +5,22 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(120,45,253,1) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  --color-primary: red;
+  --color-primary: #4b4ba4;
   --color-white: #ffffff;
   --color-grey: #808080ff;
   --color-grey-dark: #494848;
   --color-grey-light: #b2b0b0;
   --color-green: #06ea06;
   --color-red: #ff0000ff;
+  --color-black: #000000;
 }
 
 a {
@@ -46,6 +48,11 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 0;
+}
+
+h3, h2, p {
+  margin: 0;
 }
 
 @media (prefers-color-scheme: light) {

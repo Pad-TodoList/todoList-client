@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Tokens } from "@todo-list/dto";
+import { Task, Tokens } from "@todo-list/dto";
 
 interface ViewModel {
   isRequestSuccess: boolean;
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
-  deleteUser(accessTokens: Tokens): void;
+  createTask(accessTokens: Tokens, task: Task): void;
 }
 
-function useDeleteUser(): ViewModel {
+function useCreateTask(): ViewModel {
   const [isRequestSuccess, setIsRequestSuccess] = useState(false);
   const [isRequestFailure, setIsRequestFailure] = useState({
     status: false,
@@ -21,7 +21,7 @@ function useDeleteUser(): ViewModel {
     isRequestFailure: isRequestFailure,
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
-    deleteUser(accessTokens) {
+    createTask(accessTokens: Tokens, task: Task) {
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -31,12 +31,15 @@ function useDeleteUser(): ViewModel {
       setIsRequestSuccess(false);
       setIsRequestFailure({ status: false, message: "" });
       setIsRequestPending(true);
+      const formData = new FormData();
+      formData.append("name", task.name);
+      formData.append("description", task.description);
+      formData.append("startDate", task.startDate);
+      formData.append("endDate", task.endDate);
+      formData.append("status", task.status);
+      formData.append("userId", task.userId);
 
-      clientHttp(
-        "/user/delete/" + accessTokens.id,
-        RequestMethods.DELETE,
-        config.headers
-      )
+      clientHttp("/task/create", RequestMethods.POST, config.headers, formData)
         .then(() => {
           setIsRequestSuccess(true);
           setIsRequestFailure({ status: false, message: "" });
@@ -51,4 +54,4 @@ function useDeleteUser(): ViewModel {
   };
 }
 
-export { useDeleteUser };
+export { useCreateTask };
