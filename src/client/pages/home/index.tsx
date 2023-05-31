@@ -8,9 +8,11 @@ import { Props } from "./type.ts";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { UseCases } from "@app/wrapper/type.ts";
+import { useUserContext } from "../../components/accountContext";
 
 function Home(_: Props) {
   const { t } = useTranslation();
+  const { setAccount } = useUserContext();
   const { pushView } = useWrapperContext();
   const navigate = useNavigate();
   const {
@@ -37,6 +39,10 @@ function Home(_: Props) {
   useEffect(() => {
     getUserTasks(getAccessToken());
   }, []);
+
+  useEffect(() => {
+    isRequestSuccess && setAccount(user);
+  }, [isRequestSuccess]);
 
   return (
     <div className={styles.home}>
