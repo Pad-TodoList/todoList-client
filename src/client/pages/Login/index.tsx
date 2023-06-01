@@ -4,6 +4,7 @@ import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { UseCases } from "@app/wrapper/type.ts";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 function Login(_: Props) {
   const { pushView } = useWrapperContext();
@@ -24,9 +25,19 @@ function Login(_: Props) {
       <div className={styles.title}>
         <h1>{t("loginPage.title")}</h1>
       </div>
-      <div className={styles.buttons}>
-        <button onClick={login}>{t("loginPage.login")}</button>
-        <button onClick={register}>{t("loginPage.register")}</button>
+      <div className={styles.body}>
+        <button
+          className={classNames(styles.button, styles.left)}
+          onClick={login}
+        >
+          {t("loginPage.login")}
+        </button>
+        <button
+          className={classNames(styles.button, styles.right)}
+          onClick={register}
+        >
+          {t("loginPage.register")}
+        </button>
       </div>
     </div>
   );
