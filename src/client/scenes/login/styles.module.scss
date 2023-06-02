@@ -1,5 +1,51 @@
 .login {
   background-color: var(--color-white);
-  width: 30rem;
+  width: 40rem;
   border-radius: 4px;
+}
+
+.header {
+  background-color: var(--color-primary);
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  padding: 0 1rem 0.5rem;
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 2rem);
+  font-size: 1.6rem;
+}
+
+.closeIconBox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeIcon {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--color-white);
+}
+
+.body {
+  padding: 1rem;
+}
+
+.loader {
+  height: 17.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }

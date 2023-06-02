@@ -24,6 +24,7 @@
       "@pages/*": ["src/client/pages/*"],
       "@scenes/*": ["src/client/scenes/*"],
       "@common/*": ["src/client/common/*"],
+      "@components/*": ["src/client/components/*"],
       "@todo-list/dto": ["src/core/src/dto/main.ts"],
       "@todo-list/view-models": ["src/core/src/viewModels/main.ts"],
       "@todo-list/utils/*": ["src/core/src/utils/*"]

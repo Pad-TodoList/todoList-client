@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import { User } from "@todo-list/dto";
 import { useLogin } from "@todo-list/view-models";
+import { CloseIcon } from "@common/assets/closeIcon";
+import { Loader } from "@common/loader";
+import { CallToActionButton } from "@common/CallToActionButton";
+import { CtaType } from "@common/CallToActionButton/types.ts";
+import { ErrorBanner } from "@components/errorBanner";
 import { LoginForm } from "./loginForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
@@ -20,9 +25,9 @@ function Login(props: Props) {
   });
   const {
     login,
-    isRequestFailure,
     isRequestPending,
     isRequestSuccess,
+    isRequestFailure,
     tokens,
   } = useLogin();
 
@@ -37,16 +42,34 @@ function Login(props: Props) {
 
   return (
     <div className={styles.login}>
-      {isRequestPending ? (
-        <div>loading...</div>
-      ) : (
-        <div>
-          <h1>{t("login.title")}</h1>
-          <LoginForm setUser={setUser} user={user} />
-          <button onClick={props.close}>{t("login.cancel")}</button>
-          <button onClick={() => login(user)}>{t("login.send")}</button>
-          {isRequestFailure && <p>{isRequestFailure.message}</p>}
+      <div className={styles.header}>
+        <h2>{t("login.title")}</h2>
+        <div className={styles.closeIconBox} onClick={props.close}>
+          <CloseIcon className={styles.closeIcon} />
         </div>
+      </div>
+      {isRequestFailure.message && (
+        <ErrorBanner message={isRequestFailure.message} />
+      )}
+      {isRequestPending ? (
+        <div className={styles.loader}>
+          <Loader />
+        </div>
+      ) : (
+        <form onSubmit={() => login(user)} className={styles.body}>
+          <LoginForm setUser={setUser} user={user} />
+          <div className={styles.buttons}>
+            <CallToActionButton
+              placeholder={t("login.cancel")}
+              type={CtaType.cancel}
+              onAction={props.close}
+            />
+            <CallToActionButton
+              placeholder={t("login.submit")}
+              onAction={() => {}}
+            />
+          </div>
+        </form>
       )}
     </div>
   );

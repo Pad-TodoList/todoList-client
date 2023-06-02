@@ -2,24 +2,26 @@ import { useTranslation } from "react-i18next";
 
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
+import { TextInput } from "@common/textInput";
 
 function LoginForm({ setUser, user }: Props) {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.registerForm}>
-      <div>
+    <div className={styles.loginForm}>
+      <div className={styles.inputBox}>
         <p>{t("login.form.input_one")}</p>
-        <input
-          type={"email"}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+        <TextInput
+          value={user.email}
+          setValue={(value) => setUser({ ...user, email: value })}
         />
       </div>
-      <div>
+      <div className={styles.inputBox}>
         <p>{t("login.form.input_two")}</p>
-        <input
+        <TextInput
+          value={user.password}
+          setValue={(value) => setUser({ ...user, password: value })}
           type={"password"}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
       </div>
     </div>

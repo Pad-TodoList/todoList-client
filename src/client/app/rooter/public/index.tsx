@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 
 import { NotFound } from "@pages/notFound";
-import { Landing } from "@pages/Landing";
-import { Login } from "@pages/Login";
+import { Landing } from "src/client/pages/landing";
+import { Login } from "src/client/pages/login";
 import { Props } from "./type.ts";
 import { WrapperContextProvider } from "@app/wrapper/wrapper.tsx";
 import { Wrapper } from "@app/wrapper";

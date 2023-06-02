@@ -9,10 +9,12 @@ import { UseCases } from "@app/wrapper/type.ts";
 import { ProfileForm } from "./profileForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
+import { useUserContext } from "../../components/accountContext";
 
 function Profile(_: Props) {
   const navigate = useNavigate();
   const { pushView } = useWrapperContext();
+  const { account, setAccount } = useUserContext();
   const { t } = useTranslation();
   const { user, getUser, isRequestPending } = useGetUser();
   const disconnection = () => {
@@ -28,11 +30,14 @@ function Profile(_: Props) {
   };
 
   useEffect(() => {
-    getUser({
-      accessToken: localStorage.getItem("pad-todolist-userToken") ?? "",
-      id: localStorage.getItem("pad-todolist-userId") ?? "",
-    });
+    !account &&
+      getUser({
+        accessToken: localStorage.getItem("pad-todolist-userToken") ?? "",
+        id: localStorage.getItem("pad-todolist-userId") ?? "",
+      });
   }, []);
+
+  setAccount(user);
 
   return (
     <div className={styles.profile}>
@@ -41,7 +46,7 @@ function Profile(_: Props) {
       ) : (
         <div>
           <h1>{t("profilePage.title")}</h1>
-          <ProfileForm user={user} />
+          <ProfileForm user={account ?? user} />
           <button onClick={() => changeLanguage("fr")}>fr</button>
           <button onClick={() => changeLanguage("en")}>en</button>
           <button
