@@ -1,0 +1,13 @@
+.textInput {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--color-white);
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--color-grey);
+  color: var(--color-black);
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+}

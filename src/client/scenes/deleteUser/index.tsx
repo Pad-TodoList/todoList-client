@@ -4,15 +4,16 @@ import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
 import { useDeleteUser } from "@todo-list/view-models";
 import React from "react";
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 
 function DeleteUser(props: Props) {
   const { t } = useTranslation();
   const { deleteUser, isRequestPending, isRequestSuccess } = useDeleteUser();
+  const accessToken = getAccessToken();
 
   React.useEffect(() => {
     if (isRequestSuccess) {
-      localStorage.removeItem("pad-todolist-userId");
-      localStorage.removeItem("pad-todolist-userToken");
+      removeAccessToken();
       window.location.reload();
     }
   }, [isRequestSuccess]);
@@ -25,15 +26,7 @@ function DeleteUser(props: Props) {
           <h1>{t("deleteUser.title")}</h1>
           <p>{t("deleteUser.warning")}</p>
           <button onClick={props.close}>{t("deleteUser.cancel")}</button>
-          <button
-            onClick={() =>
-              deleteUser({
-                accessToken:
-                  localStorage.getItem("pad-todolist-accessToken") ?? "",
-                id: localStorage.getItem("pad-todolist-userId") ?? "",
-              })
-            }
-          >
+          <button onClick={() => deleteUser(accessToken)}>
             {t("deleteUser.confirm")}
           </button>
         </div>

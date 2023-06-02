@@ -2,39 +2,47 @@ import { useTranslation } from "react-i18next";
 
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
+import { TextInput } from "@common/textInput";
 
 function RegisterForm({ setUser, user }: Props) {
   const { t } = useTranslation();
 
   return (
     <div className={styles.registerForm}>
-      <div>
+      <div className={styles.inputBox}>
         <p>{t("register.form.input_one")}</p>
-        <input
-          onChange={(e) => setUser({ ...user, nickName: e.target.value })}
+        <TextInput
+          value={user.nickName}
+          setValue={(value) => setUser({ ...user, nickName: value })}
         />
       </div>
-      <div>
+      <div className={styles.inputBox}>
         <p>{t("register.form.input_two")}</p>
-        <input
-          onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+        <TextInput
+          value={user.firstName}
+          setValue={(value) => setUser({ ...user, firstName: value })}
         />
       </div>
-      <div>
+      <div className={styles.inputBox}>
         <p>{t("register.form.input_three")}</p>
-        <input
-          onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+        <TextInput
+          value={user.lastName}
+          setValue={(value) => setUser({ ...user, lastName: value })}
         />
       </div>
-      <div>
+      <div className={styles.inputBox}>
         <p>{t("register.form.input_four")}</p>
-        <input onChange={(e) => setUser({ ...user, email: e.target.value })} />
+        <TextInput
+          value={user.email}
+          setValue={(value) => setUser({ ...user, email: value })}
+        />
       </div>
-      <div>
+      <div className={styles.inputBox}>
         <p>{t("register.form.input_five")}</p>
-        <input
+        <TextInput
+          value={user.password}
           type={"password"}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          setValue={(value) => setUser({ ...user, password: value })}
         />
       </div>
     </div>

@@ -6,7 +6,7 @@ import { Language } from "./enums/languages.ts";
 import translationEN from "./i18n/en.json";
 import translationFR from "./i18n/fr.json";
 
-const defaultLanguage = Language.FR;
+const defaultLanguage = Language.EN;
 
 const resources = {
   en: {
