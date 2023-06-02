@@ -20,7 +20,8 @@
   "loginPage": {
     "title": "Connection",
     "login": "Connection",
-    "register": "Register"
+    "register": "Register",
+    "landingPage": "Landing page"
   },
   "homePage": {
     "title": "Home page"
@@ -41,7 +42,7 @@
   "register": {
     "title": "Register",
     "cancel": "Cancel",
-    "send": "Send",
+    "submit": "Submit",
     "form": {
       "input_one": "Nickname",
       "input_two": "Firstname",
@@ -53,7 +54,7 @@
   "login": {
     "title": "Login",
     "cancel": "Cancel",
-    "send": "Send",
+    "submit": "Submit",
     "form": {
       "input_one": "Email",
       "input_two": "Password"

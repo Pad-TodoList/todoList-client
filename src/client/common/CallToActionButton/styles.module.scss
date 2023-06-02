@@ -1,0 +1,27 @@
+.callToActionButton {
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.callToActionButtonSubmit {
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-primary);
+  color: var(--color-white);
+  font-weight: bold;
+
+  &:hover {
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+}
+
+.callToActionButtonCancel {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bold;
+  padding: 0;
+  color: var(--color-secondary);
+}

@@ -1,0 +1,54 @@
+.errorBanner {
+  position: absolute;
+  top: 1rem;
+  right: -21rem;
+  background-color: var(--color-red);
+  width: 20rem;
+  height: 5rem;
+  border-radius: 5px;
+  animation: displayError ease-in-out 5s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+@keyframes displayError {
+  0% {
+    right: -21rem;
+  }
+  10% {
+    right: 2rem;
+  }
+  90% {
+    right: 2rem;
+  }
+  100% {
+    right: -21rem;
+  }
+}
+
+.timeLine {
+  height: 5px;
+  bottom: 0;
+  background-color: var(--color-white);
+  border-radius: 30px;
+  animation: timeLine linear 4.5s;
+}
+
+@keyframes timeLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20rem;
+  }
+}
+
+.description {
+  width: calc(100% - 2rem);
+  height: 100%;
+  padding: 1rem 1rem 0;
+  font-weight: 600;
+}

@@ -8,6 +8,7 @@
 }
 
 .title {
+  margin-top: 3rem;
   color: var(--color-white);
 }
 
@@ -20,20 +21,25 @@
   gap: 4rem;
 }
 
+.bottom {
+  margin-bottom: 1rem;
+}
+
 .button {
   position: relative;
   overflow: hidden;
   border: 2px solid transparent;
   border-radius: 5px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  width: 10rem;
-  height: 4rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(178, 176, 176, 0.55);
   cursor: pointer;
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.4rem;
 
   &:hover {
     animation: moveButton 1s linear infinite alternate;
@@ -56,24 +62,20 @@
 
 .left::after {
   right: -100%;
-  background: linear-gradient(to left, transparent, var(--color-white));
   animation: moveLeftToRight 2s infinite linear;
 }
 
 .left:hover::after {
   right: 100%;
-  transition: right 0.5s linear, opacity 0.5s linear;
 }
 
 .right::after {
   left: -100%;
-  background: linear-gradient(to right, transparent, var(--color-white));
   animation: moveRightToLeft 2s infinite linear;
 }
 
 .right:hover::after {
   left: 100%;
-  transition: left 0.5s linear, opacity 0.5s linear;
 }
 
 @keyframes moveButton {
@@ -84,23 +86,38 @@
 @keyframes moveLeftToRight {
   0% {
     right: -100%;
+    background: linear-gradient(to left, transparent, var(--color-white));
   }
   50% {
     right: 100%;
   }
   100% {
     right: -100%;
+    background: linear-gradient(to right, transparent, var(--color-white));
   }
 }
 
 @keyframes moveRightToLeft {
   0% {
     left: -100%;
+    background: linear-gradient(to right, transparent, var(--color-white));
   }
   50% {
     left: 100%;
   }
   100% {
     left: -100%;
+    background: linear-gradient(to left, transparent, var(--color-white));
+  }
+}
+
+.redirectButton {
+  color: var(--color-white);
+  text-decoration: underline;
+  font-style: italic;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
   }
 }

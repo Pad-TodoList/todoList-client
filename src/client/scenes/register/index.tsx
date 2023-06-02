@@ -7,6 +7,10 @@ import { User } from "@todo-list/dto";
 import { RegisterForm } from "./registerForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
+import { CloseIcon } from "@common/assets/closeIcon";
+import { Loader } from "@common/loader";
+import { CallToActionButton } from "@common/CallToActionButton";
+import { CtaType } from "@common/CallToActionButton/types.ts";
 
 function Register(props: Props) {
   const { t } = useTranslation();
@@ -18,13 +22,8 @@ function Register(props: Props) {
     nickName: "",
     password: "",
   });
-  const {
-    register,
-    isRequestFailure,
-    isRequestPending,
-    isRequestSuccess,
-    tokens,
-  } = useRegister();
+  const { register, isRequestPending, isRequestSuccess, tokens } =
+    useRegister();
 
   React.useEffect(() => {
     if (isRequestSuccess) {
@@ -37,16 +36,31 @@ function Register(props: Props) {
 
   return (
     <div className={styles.register}>
-      {isRequestPending ? (
-        <div>loading...</div>
-      ) : (
-        <div>
-          <h1>{t("register.title")}</h1>
-          <RegisterForm setUser={setUser} user={user} />
-          <button onClick={props.close}>{t("register.cancel")}</button>
-          <button onClick={() => register(user)}>{t("register.send")}</button>
-          {isRequestFailure && <p>{isRequestFailure.message}</p>}
+      <div className={styles.header}>
+        <h2>{t("register.title")}</h2>
+        <div className={styles.closeIconBox} onClick={props.close}>
+          <CloseIcon className={styles.closeIcon} />
         </div>
+      </div>
+      {isRequestPending ? (
+        <div className={styles.loader}>
+          <Loader />
+        </div>
+      ) : (
+        <form onSubmit={() => register(user)} className={styles.body}>
+          <RegisterForm setUser={setUser} user={user} />
+          <div className={styles.buttons}>
+            <CallToActionButton
+              placeholder={t("register.cancel")}
+              type={CtaType.cancel}
+              onAction={props.close}
+            />
+            <CallToActionButton
+              placeholder={t("register.submit")}
+              onAction={() => {}}
+            />
+          </div>
+        </form>
       )}
     </div>
   );

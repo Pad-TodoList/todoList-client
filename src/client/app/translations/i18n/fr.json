@@ -20,7 +20,8 @@
   "loginPage": {
     "title": "Se connecter",
     "login": "Se connecter",
-    "register": "S'enregistrer"
+    "register": "S'enregistrer",
+    "landingPage": "Page d'acceuil"
   },
   "homePage": {
     "title": "Page principale"
@@ -41,7 +42,7 @@
   "register": {
     "title": "S'enregistrer",
     "cancel": "Annuler",
-    "send": "Envoyer",
+    "submit": "Envoyer",
     "form": {
       "input_one": "Pseudo",
       "input_two": "Prénom",
@@ -53,7 +54,7 @@
   "login": {
     "title": "Se connecter",
     "cancel": "Annuler",
-    "send": "Envoyer",
+    "submit": "Envoyer",
     "form": {
       "input_one": "Email",
       "input_two": "Mot de passe"
