@@ -24,7 +24,8 @@
     "landingPage": "Page d'acceuil"
   },
   "homePage": {
-    "title": "Page principale"
+    "titleDay": "Bonjour ",
+    "titleNight": "Bonsoir "
   },
   "profilePage": {
     "title": "Profil",

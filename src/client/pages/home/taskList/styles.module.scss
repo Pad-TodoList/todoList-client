@@ -1,0 +1,13 @@
+.taskList {
+  display: inline-flex;
+}
+
+.listBox {
+  margin: 0 1rem 1rem;
+  background-color: var(--color-grey);
+  padding: 1rem;
+  border-radius: 5px;
+  height: 10rem;
+  width: 5rem;
+  max-width: 5rem;
+}

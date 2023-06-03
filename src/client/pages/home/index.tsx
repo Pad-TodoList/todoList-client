@@ -8,13 +8,17 @@ import { Props } from "./type.ts";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { UseCases } from "@app/wrapper/type.ts";
-import { useUserContext } from "../../components/accountContext";
+import { useUserContext } from "@components/accountContext";
+import { ErrorBanner } from "@components/errorBanner";
+import { Loader } from "@common/loader";
+import { TaskList } from "./taskList";
 
 function Home(_: Props) {
   const { t } = useTranslation();
   const { setAccount } = useUserContext();
   const { pushView } = useWrapperContext();
   const navigate = useNavigate();
+  const time = new Date().getHours();
   const {
     user,
     getUser,
@@ -46,32 +50,34 @@ function Home(_: Props) {
 
   return (
     <div className={styles.home}>
-      <p>{t("homePage.title")}</p>
-      {isRequestSuccess && <div>{user.nickName}</div>}
-      {isRequestFailure && <div>{isRequestFailure.message}</div>}
-      {isRequestPending && <div>loading...</div>}
-      {isRequestTasksPending ? (
-        <div>tasks loading...</div>
+      {isRequestFailure.message && (
+        <ErrorBanner message={isRequestFailure.message} />
+      )}
+      {isRequestPending ? (
+        <div className={styles.loader}>
+          <Loader />
+        </div>
       ) : (
-        <div>
-          {tasks.map((task) => (
-            <div
-              onClick={() =>
-                pushView({ data: { task }, useCase: UseCases.RetrieveTask })
-              }
-              key={task.uuid}
-            >
-              {task.name}
-            </div>
-          ))}
+        <div className={styles.body}>
+          <h1 className={styles.title}>
+            {time < 18 && time > 4
+              ? t("homePage.titleDay")
+              : t("homePage.titleNight")}
+            {user.nickName}
+          </h1>
+          {isRequestTasksPending ? (
+            <div>tasks loading...</div>
+          ) : (
+            <TaskList tasks={tasks} />
+          )}
+          <button
+            onClick={() => pushView({ data: {}, useCase: UseCases.CreateTask })}
+          >
+            create task
+          </button>
+          <button onClick={goToProfile}>profile</button>
         </div>
       )}
-      <button
-        onClick={() => pushView({ data: {}, useCase: UseCases.CreateTask })}
-      >
-        create task
-      </button>
-      <button onClick={goToProfile}>profile</button>
     </div>
   );
 }

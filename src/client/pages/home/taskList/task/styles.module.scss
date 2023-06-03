@@ -1,0 +1,10 @@
+.task {
+  background-color: var(--color-white);
+  margin: 0.5rem 0 1rem;
+  padding: 0 1rem;
+  border-radius: 5px;
+
+  &:active {
+    transform: rotate(5deg);
+  }
+}

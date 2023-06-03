@@ -5,7 +5,7 @@ import { Identifiable, Task } from "@todo-list/dto";
 import { RetrieveTaskForm } from "./retrieveTaskForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useDeleteTask } from "@todo-list/view-models";
+import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 
 function RetrieveTask(props: Props) {
@@ -13,6 +13,7 @@ function RetrieveTask(props: Props) {
   const tokens = getAccessToken();
   const [task, setTask] = useState<Identifiable<Task>>(props.task);
   const { isRequestPending, isRequestSuccess, deleteTask } = useDeleteTask();
+  const { updateTask } = useUpdateTask();
 
   React.useEffect(() => {
     isRequestSuccess && props.close();
@@ -29,7 +30,7 @@ function RetrieveTask(props: Props) {
           <button onClick={() => deleteTask(tokens, props.task.uuid)}>
             supprimer
           </button>
-          <button onClick={() => {}}>modifier</button>
+          <button onClick={() => updateTask(task, tokens)}>modifier</button>
         </div>
       )}
     </div>

@@ -24,7 +24,8 @@
     "landingPage": "Landing page"
   },
   "homePage": {
-    "title": "Home page"
+    "title": "Hello ",
+    "titleNight": "Good evening "
   },
   "profilePage": {
     "title": "Profile",
