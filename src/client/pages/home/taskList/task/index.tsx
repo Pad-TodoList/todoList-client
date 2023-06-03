@@ -1,26 +1,26 @@
-import { Props } from "./types";
-import styles from "./styles.module.scss";
-import { UseCases } from "@app/wrapper/type.ts";
 import { useState } from "react";
+
 import { Identifiable, Task as T } from "@todo-list/dto";
-import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { UseCases } from "@app/wrapper/type.ts";
+import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
+import { Props } from "./types";
+import styles from "./styles.module.scss";
 
 function Task({
   task,
   finishTasks,
   inProgressTasks,
   notStartedTasks,
+  targetList,
+  setTargetList,
   setFinishTasks,
   setInProgressTasks,
   setNotStartedTasks,
 }: Props) {
   const { pushView } = useWrapperContext();
   const [draggedTask, setDraggedTask] = useState<Identifiable<T> | null>(null);
-  const [targetList, setTargetList] = useState<
-    "notStarted" | "inProgress" | "finish" | null
-  >(null);
   const { updateTask } = useUpdateTask();
   const tokens = getAccessToken();
 
@@ -110,7 +110,6 @@ function Task({
       onDragStart={(e) => handleDragStart(e, task)}
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
-      onDragOver={(event) => event.preventDefault()}
       onClick={() =>
         pushView({ data: { task }, useCase: UseCases.RetrieveTask })
       }
