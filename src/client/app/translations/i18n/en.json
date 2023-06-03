@@ -25,7 +25,12 @@
   },
   "homePage": {
     "title": "Hello ",
-    "titleNight": "Good evening "
+    "titleNight": "Good evening ",
+    "lists": {
+      "notStarted": "Not started",
+      "inProgress": "In progress",
+      "finish": "Finish"
+    }
   },
   "profilePage": {
     "title": "Profile",

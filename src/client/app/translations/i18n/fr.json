@@ -25,7 +25,12 @@
   },
   "homePage": {
     "titleDay": "Bonjour ",
-    "titleNight": "Bonsoir "
+    "titleNight": "Bonsoir ",
+    "lists": {
+      "notStarted": "Pas commencées",
+      "inProgress": "En cours",
+      "finish": "Terminées"
+    }
   },
   "profilePage": {
     "title": "Profil",

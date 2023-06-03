@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { Identifiable, Task as T } from "@todo-list/dto";
-import { useUpdateTask } from "@todo-list/view-models";
+import { Identifiable, Task, Task as T } from "@todo-list/dto";
+import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { UseCases } from "@app/wrapper/type.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { Props } from "./types";
 import styles from "./styles.module.scss";
+import { TrashIcon } from "@common/assets/trashIcon";
 
 function Task({
   task,
@@ -23,6 +24,7 @@ function Task({
   const [draggedTask, setDraggedTask] = useState<Identifiable<T> | null>(null);
   const { updateTask } = useUpdateTask();
   const tokens = getAccessToken();
+  const { deleteTask } = useDeleteTask();
 
   const handleDragStart = (event: any, task: Identifiable<T>) => {
     setDraggedTask(task);
@@ -102,6 +104,17 @@ function Task({
     setTargetList(null);
   };
 
+  const removeTask = (task: Identifiable<Task>) => {
+    deleteTask(tokens, task.uuid);
+    setInProgressTasks(
+      inProgressTasks.filter(({ uuid }) => uuid !== task.uuid)
+    );
+    setNotStartedTasks(
+      notStartedTasks.filter(({ uuid }) => uuid !== task.uuid)
+    );
+    setFinishTasks(finishTasks.filter(({ uuid }) => uuid !== task.uuid));
+  };
+
   return (
     <div
       key={task.uuid}
@@ -115,6 +128,15 @@ function Task({
       }
     >
       <p>{task.name}</p>
+      <div
+        className={styles.iconBox}
+        onClick={(e) => {
+          e.stopPropagation();
+          removeTask(task);
+        }}
+      >
+        <TrashIcon className={styles.icon} />
+      </div>
     </div>
   );
 }
