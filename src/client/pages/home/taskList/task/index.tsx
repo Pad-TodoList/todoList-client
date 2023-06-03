@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Identifiable, Task, Task as T } from "@todo-list/dto";
+import { Identifiable, Task, Task as T, taskStatuses } from "@todo-list/dto";
 import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { UseCases } from "@app/wrapper/type.ts";
@@ -80,23 +80,29 @@ function Task({
         if (targetList === "inProgress") {
           setInProgressTasks([
             ...inProgressTasks,
-            { ...draggedTask, status: "inProgress" },
+            { ...draggedTask, status: taskStatuses.inProgress },
           ]);
-          updateTask({ ...draggedTask, status: "inProgress" }, tokens);
+          updateTask(
+            { ...draggedTask, status: taskStatuses.inProgress },
+            tokens
+          );
         }
         if (targetList === "notStarted") {
           setNotStartedTasks([
             ...notStartedTasks,
-            { ...draggedTask, status: "notStarted" },
+            { ...draggedTask, status: taskStatuses.notStarted },
           ]);
-          updateTask({ ...draggedTask, status: "notStarted" }, tokens);
+          updateTask(
+            { ...draggedTask, status: taskStatuses.notStarted },
+            tokens
+          );
         }
         if (targetList === "finish") {
           setFinishTasks([
             ...finishTasks,
-            { ...draggedTask, status: "finish" },
+            { ...draggedTask, status: taskStatuses.finish },
           ]);
-          updateTask({ ...draggedTask, status: "finish" }, tokens);
+          updateTask({ ...draggedTask, status: taskStatuses.finish }, tokens);
         }
       }
     }

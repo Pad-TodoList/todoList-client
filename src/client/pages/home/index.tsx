@@ -38,9 +38,6 @@ function Home(_: Props) {
 
   useEffect(() => {
     getUser(getAccessToken());
-  }, []);
-
-  useEffect(() => {
     getUserTasks(getAccessToken());
   }, []);
 
@@ -65,17 +62,23 @@ function Home(_: Props) {
               : t("homePage.titleNight")}
             {user.nickName}
           </h1>
-          {isRequestTasksPending ? (
-            <div>tasks loading...</div>
-          ) : (
-            <TaskList tasks={tasks} />
-          )}
-          <button
-            onClick={() => pushView({ data: {}, useCase: UseCases.CreateTask })}
-          >
-            create task
-          </button>
-          <button onClick={goToProfile}>profile</button>
+          <div className={styles.buttons}>
+            <button
+              className={styles.button}
+              onClick={() =>
+                pushView({
+                  data: {},
+                  useCase: UseCases.CreateTask,
+                })
+              }
+            >
+              {t("homePage.createTask")}
+            </button>
+            <button className={styles.button} onClick={goToProfile}>
+              {t("homePage.goToProfile")}
+            </button>
+          </div>
+          {isRequestTasksPending ? <Loader /> : <TaskList tasks={tasks} />}
         </div>
       )}
     </div>

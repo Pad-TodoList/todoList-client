@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Task } from "@todo-list/dto";
+import { Task, taskStatuses } from "@todo-list/dto";
+import { useCreateTask } from "@todo-list/view-models";
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { Loader } from "@common/loader";
+import { CloseIcon } from "@common/assets/closeIcon";
+import { CallToActionButton } from "@common/CallToActionButton";
+import { CtaType } from "@common/CallToActionButton/types.ts";
 import { CreateTaskForm } from "./createTaskForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useCreateTask } from "@todo-list/view-models";
-import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 
 function CreateTask(props: Props) {
   const { t } = useTranslation();
@@ -16,7 +20,7 @@ function CreateTask(props: Props) {
     endDate: "",
     name: "",
     startDate: "",
-    status: "",
+    status: taskStatuses.notStarted,
     userId: tokens.id,
   });
   const { createTask, isRequestPending, isRequestSuccess } = useCreateTask();
@@ -26,15 +30,37 @@ function CreateTask(props: Props) {
   return (
     <div className={styles.createTask}>
       {isRequestPending ? (
-        <div>loading...</div>
+        <div className={styles.loader}>
+          <Loader />
+        </div>
       ) : (
         <div>
-          <h1>Create task</h1>
-          <CreateTaskForm setTask={setTask} task={task} />
-          <button onClick={props.close}>{t("register.cancel")}</button>
-          <button onClick={() => createTask(tokens, task)}>
-            {t("register.send")}
-          </button>
+          <div className={styles.header}>
+            <h2>{t("createTask.title")}</h2>
+            <div className={styles.closeIconBox} onClick={props.close}>
+              <CloseIcon className={styles.closeIcon} />
+            </div>
+          </div>
+          <form
+            className={styles.body}
+            onSubmit={() => {
+              createTask(tokens, task);
+              props.close();
+            }}
+          >
+            <CreateTaskForm setTask={setTask} task={task} />
+            <div className={styles.buttons}>
+              <CallToActionButton
+                placeholder={t("createTask.cancel")}
+                type={CtaType.cancel}
+                onAction={props.close}
+              />
+              <CallToActionButton
+                placeholder={t("createTask.submit")}
+                onAction={() => {}}
+              />
+            </div>
+          </form>
         </div>
       )}
     </div>

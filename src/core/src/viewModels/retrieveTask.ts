@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Id, Identifiable, Task, Tokens } from "@todo-list/dto";
+import { Id, Identifiable, Task, taskStatuses, Tokens } from "@todo-list/dto";
 
 interface ViewModel {
   isRequestSuccess: boolean;
@@ -22,7 +22,7 @@ function useRetrieveTask(): ViewModel {
     endDate: "",
     name: "",
     startDate: "",
-    status: "",
+    status: taskStatuses.notStarted,
     userId: "",
     uuid: "",
   });

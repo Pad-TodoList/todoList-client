@@ -26,6 +26,8 @@
   "homePage": {
     "titleDay": "Bonjour ",
     "titleNight": "Bonsoir ",
+    "createTask":  "Ajouter une tâche",
+    "goToProfile": "Profil",
     "lists": {
       "notStarted": "Pas commencées",
       "inProgress": "En cours",
@@ -71,5 +73,17 @@
     "warning": "Voulez-vous vraiment supprimer votre compte ? Cette étape est irréversible.",
     "confirm": "Confirmer",
     "cancel": "Annuler"
+  },
+  "createTask": {
+    "title": "Créer une nouvelle tâche",
+    "cancel": "Annuler",
+    "submit": "Envoyer",
+    "form": {
+      "input_one": "Titre",
+      "input_two": "Description",
+      "input_three": "Début",
+      "input_four": "Fin",
+      "input_five": "Statut"
+    }
   }
 }

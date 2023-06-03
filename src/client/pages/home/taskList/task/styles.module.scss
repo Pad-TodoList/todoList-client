@@ -46,4 +46,8 @@
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--color-red);
+
+  &:hover {
+    fill: var(--color-secondary);
+  }
 }

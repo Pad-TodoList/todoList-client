@@ -1,3 +1,38 @@
 .createTaskForm {
+  width: 100%;
+  max-height: 30rem;
+  overflow: auto;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 90%;
   color: red;
+
+  p {
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+}
+
+.selectStatus {
+  background-color: transparent;
+  border: 2px solid var(--color-grey);
+  border-radius: 5px;
+  height: 2rem;
+  width: 6rem;
+  color: var(--color-black);
+}
+
+.textArea {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-grey);
+  border-radius: 5px;
+  color: var(--color-black);
+  height: 10rem;
+  max-height: 10rem;
+  max-width: 102%;
 }

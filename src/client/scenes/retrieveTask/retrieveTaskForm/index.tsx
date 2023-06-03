@@ -1,5 +1,6 @@
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
+import { taskStatuses } from "@todo-list/dto";
 
 function RetrieveTaskForm({ setTask, task }: Props) {
   return (
@@ -36,7 +37,9 @@ function RetrieveTaskForm({ setTask, task }: Props) {
         <p>Status</p>
         <input
           value={task.status}
-          onChange={(e) => setTask({ ...task, status: e.target.value })}
+          onChange={(e) =>
+            setTask({ ...task, status: e.target.value as taskStatuses })
+          }
         />
       </div>
     </div>
