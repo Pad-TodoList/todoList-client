@@ -9,17 +9,7 @@ import { Props } from "./types";
 import styles from "./styles.module.scss";
 import { TrashIcon } from "@common/assets/trashIcon";
 
-function Task({
-  task,
-  finishTasks,
-  inProgressTasks,
-  notStartedTasks,
-  targetList,
-  setTargetList,
-  setFinishTasks,
-  setInProgressTasks,
-  setNotStartedTasks,
-}: Props) {
+function Task({ task, targetList, tasks, setTasks, setTargetList }: Props) {
   const { pushView } = useWrapperContext();
   const [draggedTask, setDraggedTask] = useState<Identifiable<T> | null>(null);
   const { updateTask } = useUpdateTask();
@@ -62,48 +52,14 @@ function Task({
   const handleDragEnd = () => {
     if (targetList) {
       if (draggedTask && draggedTask.status !== targetList) {
-        if (draggedTask.status === "inProgress") {
-          setInProgressTasks(
-            inProgressTasks.filter((task) => task.uuid !== draggedTask.uuid)
-          );
-        }
-        if (draggedTask.status === "notStarted") {
-          setNotStartedTasks(
-            notStartedTasks.filter((task) => task.uuid !== draggedTask.uuid)
-          );
-        }
-        if (draggedTask.status === "finish") {
-          setFinishTasks(
-            finishTasks.filter((task) => task.uuid !== draggedTask.uuid)
-          );
-        }
-        if (targetList === "inProgress") {
-          setInProgressTasks([
-            ...inProgressTasks,
-            { ...draggedTask, status: taskStatuses.inProgress },
-          ]);
-          updateTask(
-            { ...draggedTask, status: taskStatuses.inProgress },
-            tokens
-          );
-        }
-        if (targetList === "notStarted") {
-          setNotStartedTasks([
-            ...notStartedTasks,
-            { ...draggedTask, status: taskStatuses.notStarted },
-          ]);
-          updateTask(
-            { ...draggedTask, status: taskStatuses.notStarted },
-            tokens
-          );
-        }
-        if (targetList === "finish") {
-          setFinishTasks([
-            ...finishTasks,
-            { ...draggedTask, status: taskStatuses.finish },
-          ]);
-          updateTask({ ...draggedTask, status: taskStatuses.finish }, tokens);
-        }
+        setTasks([
+          ...tasks.filter((task) => task.uuid !== draggedTask.uuid),
+          { ...draggedTask, status: targetList as taskStatuses },
+        ]);
+        updateTask(
+          { ...draggedTask, status: targetList as taskStatuses },
+          tokens
+        );
       }
     }
     setDraggedTask(null);
@@ -112,13 +68,7 @@ function Task({
 
   const removeTask = (task: Identifiable<Task>) => {
     deleteTask(tokens, task.uuid);
-    setInProgressTasks(
-      inProgressTasks.filter(({ uuid }) => uuid !== task.uuid)
-    );
-    setNotStartedTasks(
-      notStartedTasks.filter(({ uuid }) => uuid !== task.uuid)
-    );
-    setFinishTasks(finishTasks.filter(({ uuid }) => uuid !== task.uuid));
+    setTasks(tasks.filter(({ uuid }) => uuid !== task.uuid));
   };
 
   return (

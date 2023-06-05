@@ -6,8 +6,6 @@ import { useGetUser, useGetUserTasks } from "@todo-list/view-models";
 import styles from "./styles.module.scss";
 import { Props } from "./type.ts";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
-import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
-import { UseCases } from "@app/wrapper/type.ts";
 import { useUserContext } from "@components/accountContext";
 import { ErrorBanner } from "@components/errorBanner";
 import { Loader } from "@common/loader";
@@ -16,7 +14,6 @@ import { TaskList } from "./taskList";
 function Home(_: Props) {
   const { t } = useTranslation();
   const { setAccount } = useUserContext();
-  const { pushView } = useWrapperContext();
   const navigate = useNavigate();
   const time = new Date().getHours();
   const {
@@ -39,11 +36,8 @@ function Home(_: Props) {
   useEffect(() => {
     getUser(getAccessToken());
     getUserTasks(getAccessToken());
-  }, []);
-
-  useEffect(() => {
     isRequestSuccess && setAccount(user);
-  }, [isRequestSuccess]);
+  }, []);
 
   return (
     <div className={styles.home}>
@@ -63,17 +57,6 @@ function Home(_: Props) {
             {user.nickName}
           </h1>
           <div className={styles.buttons}>
-            <button
-              className={styles.button}
-              onClick={() =>
-                pushView({
-                  data: {},
-                  useCase: UseCases.CreateTask,
-                })
-              }
-            >
-              {t("homePage.createTask")}
-            </button>
             <button className={styles.button} onClick={goToProfile}>
               {t("homePage.goToProfile")}
             </button>

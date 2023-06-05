@@ -23,9 +23,19 @@ function CreateTask(props: Props) {
     status: taskStatuses.notStarted,
     userId: tokens.id,
   });
-  const { createTask, isRequestPending, isRequestSuccess } = useCreateTask();
+  const {
+    createTask,
+    isRequestPending,
+    isRequestSuccess,
+    task: createdTask,
+  } = useCreateTask();
 
-  useEffect(() => close, [isRequestSuccess]);
+  useEffect(() => {
+    if (isRequestSuccess) {
+      props.addTask(createdTask);
+      props.close();
+    }
+  }, [isRequestSuccess]);
 
   return (
     <div className={styles.createTask}>
@@ -45,7 +55,6 @@ function CreateTask(props: Props) {
             className={styles.body}
             onSubmit={() => {
               createTask(tokens, task);
-              props.close();
             }}
           >
             <CreateTaskForm setTask={setTask} task={task} />

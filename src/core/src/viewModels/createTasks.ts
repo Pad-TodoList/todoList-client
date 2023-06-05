@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { clientHttp, RequestMethods } from "@todo-list/utils/clientHttp.ts";
-import { Task, Tokens } from "@todo-list/dto";
+import { Identifiable, Task, taskStatuses, Tokens } from "@todo-list/dto";
 
 interface ViewModel {
   isRequestSuccess: boolean;
   isRequestPending: boolean;
   isRequestFailure: { status: boolean; message: string };
+  task: Identifiable<Task>;
   createTask(accessTokens: Tokens, task: Task): void;
 }
 
 function useCreateTask(): ViewModel {
+  const [createdTask, setCreatedTask] = useState<Identifiable<Task>>({
+    description: "",
+    endDate: "",
+    name: "",
+    startDate: "",
+    status: taskStatuses.notStarted,
+    userId: "",
+    uuid: "",
+  });
   const [isRequestSuccess, setIsRequestSuccess] = useState(false);
   const [isRequestFailure, setIsRequestFailure] = useState({
     status: false,
@@ -21,6 +31,7 @@ function useCreateTask(): ViewModel {
     isRequestFailure: isRequestFailure,
     isRequestPending: isRequestPending,
     isRequestSuccess: isRequestSuccess,
+    task: createdTask,
     createTask(accessTokens: Tokens, task: Task) {
       const config = {
         headers: {
@@ -40,10 +51,19 @@ function useCreateTask(): ViewModel {
       formData.append("userId", task.userId);
 
       clientHttp("/task/create", RequestMethods.POST, config.headers, formData)
-        .then(() => {
+        .then((response) => {
           setIsRequestSuccess(true);
           setIsRequestFailure({ status: false, message: "" });
           setIsRequestPending(false);
+          setCreatedTask({
+            description: response.data.description,
+            endDate: response.data.endDate,
+            name: response.data.name,
+            startDate: response.data.startDate,
+            status: response.data.status,
+            userId: response.data.userId,
+            uuid: response.data.id,
+          });
         })
         .catch((error) => {
           setIsRequestSuccess(false);

@@ -24,8 +24,8 @@ function Wrapper() {
     [UseCases.DeleteUser]: ({ user }: ViewModels[UseCases.DeleteUser]) => (
       <DeleteUser user={user} close={close} />
     ),
-    [UseCases.CreateTask]: (_: ViewModels[UseCases.CreateTask]) => (
-      <CreateTask close={close} />
+    [UseCases.CreateTask]: ({ addTask }: ViewModels[UseCases.CreateTask]) => (
+      <CreateTask close={close} addTask={addTask} />
     ),
     [UseCases.RetrieveTask]: ({ task }: ViewModels[UseCases.RetrieveTask]) => (
       <RetrieveTask close={close} task={task} />

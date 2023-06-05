@@ -1,28 +1,37 @@
 import { useState } from "react";
 
-import { Identifiable, Task as T } from "@todo-list/dto";
 import { Task } from "./task";
 import { Props } from "./types";
 import styles from "./styles.module.scss";
 import { useTranslation } from "react-i18next";
+import { UseCases } from "@app/wrapper/type.ts";
+import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 
-function TaskList({ tasks }: Props) {
+function TaskList(props: Props) {
   const { t } = useTranslation();
-  const [inProgressTasks, setInProgressTasks] = useState<Identifiable<T>[]>(
-    tasks.filter((task) => task.status === "inProgress")
-  );
-  const [finishTasks, setFinishTasks] = useState<Identifiable<T>[]>(
-    tasks.filter((task) => task.status === "finish")
-  );
-  const [notStartedTasks, setNotStartedTasks] = useState<Identifiable<T>[]>(
-    tasks.filter((task) => task.status === "notStarted")
-  );
+  const { pushView } = useWrapperContext();
+  const [tasks, setTasks] = useState(props.tasks);
   const [targetList, setTargetList] = useState<
     "notStarted" | "inProgress" | "finish" | null
   >(null);
 
   return (
     <div className={styles.taskList}>
+      <button
+        className={styles.button}
+        onClick={() =>
+          pushView({
+            data: {
+              addTask: (task) => {
+                setTasks([...tasks, task]);
+              },
+            },
+            useCase: UseCases.CreateTask,
+          })
+        }
+      >
+        {t("homePage.createTask")}
+      </button>
       <div
         id="notStartedTasks"
         className={styles.listBox}
@@ -30,20 +39,18 @@ function TaskList({ tasks }: Props) {
       >
         <h2>{t("homePage.lists.notStarted")}</h2>
         <div className={styles.tasks}>
-          {notStartedTasks.map((task) => (
-            <Task
-              key={task.uuid}
-              task={task}
-              finishTasks={finishTasks}
-              inProgressTasks={inProgressTasks}
-              notStartedTasks={notStartedTasks}
-              targetList={targetList}
-              setTargetList={setTargetList}
-              setFinishTasks={setFinishTasks}
-              setInProgressTasks={setInProgressTasks}
-              setNotStartedTasks={setNotStartedTasks}
-            />
-          ))}
+          {tasks
+            .filter((task) => task.status === "notStarted")
+            .map((task) => (
+              <Task
+                key={task.uuid}
+                task={task}
+                targetList={targetList}
+                tasks={tasks}
+                setTasks={setTasks}
+                setTargetList={setTargetList}
+              />
+            ))}
         </div>
       </div>
       <div
@@ -53,20 +60,18 @@ function TaskList({ tasks }: Props) {
       >
         <h2>{t("homePage.lists.inProgress")}</h2>
         <div className={styles.tasks}>
-          {inProgressTasks.map((task) => (
-            <Task
-              key={task.uuid}
-              task={task}
-              finishTasks={finishTasks}
-              inProgressTasks={inProgressTasks}
-              notStartedTasks={notStartedTasks}
-              targetList={targetList}
-              setTargetList={setTargetList}
-              setFinishTasks={setFinishTasks}
-              setInProgressTasks={setInProgressTasks}
-              setNotStartedTasks={setNotStartedTasks}
-            />
-          ))}
+          {tasks
+            .filter((task) => task.status === "inProgress")
+            .map((task) => (
+              <Task
+                key={task.uuid}
+                task={task}
+                targetList={targetList}
+                tasks={tasks}
+                setTasks={setTasks}
+                setTargetList={setTargetList}
+              />
+            ))}
         </div>
       </div>
       <div
@@ -76,20 +81,18 @@ function TaskList({ tasks }: Props) {
       >
         <h2>{t("homePage.lists.finish")}</h2>
         <div className={styles.tasks}>
-          {finishTasks.map((task) => (
-            <Task
-              key={task.uuid}
-              task={task}
-              finishTasks={finishTasks}
-              inProgressTasks={inProgressTasks}
-              notStartedTasks={notStartedTasks}
-              targetList={targetList}
-              setTargetList={setTargetList}
-              setFinishTasks={setFinishTasks}
-              setInProgressTasks={setInProgressTasks}
-              setNotStartedTasks={setNotStartedTasks}
-            />
-          ))}
+          {tasks
+            .filter((task) => task.status === "finish")
+            .map((task) => (
+              <Task
+                key={task.uuid}
+                task={task}
+                targetList={targetList}
+                tasks={tasks}
+                setTasks={setTasks}
+                setTargetList={setTargetList}
+              />
+            ))}
         </div>
       </div>
     </div>
