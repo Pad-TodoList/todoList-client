@@ -39,38 +39,36 @@ function CreateTask(props: Props) {
 
   return (
     <div className={styles.createTask}>
+      <div className={styles.header}>
+        <h2>{t("createTask.title")}</h2>
+        <div className={styles.closeIconBox} onClick={props.close}>
+          <CloseIcon className={styles.closeIcon} />
+        </div>
+      </div>
       {isRequestPending ? (
         <div className={styles.loader}>
           <Loader />
         </div>
       ) : (
-        <div>
-          <div className={styles.header}>
-            <h2>{t("createTask.title")}</h2>
-            <div className={styles.closeIconBox} onClick={props.close}>
-              <CloseIcon className={styles.closeIcon} />
-            </div>
+        <form
+          className={styles.body}
+          onSubmit={() => {
+            createTask(tokens, task);
+          }}
+        >
+          <CreateTaskForm setTask={setTask} task={task} />
+          <div className={styles.buttons}>
+            <CallToActionButton
+              placeholder={t("createTask.cancel")}
+              type={CtaType.cancel}
+              onAction={props.close}
+            />
+            <CallToActionButton
+              placeholder={t("createTask.submit")}
+              onAction={() => {}}
+            />
           </div>
-          <form
-            className={styles.body}
-            onSubmit={() => {
-              createTask(tokens, task);
-            }}
-          >
-            <CreateTaskForm setTask={setTask} task={task} />
-            <div className={styles.buttons}>
-              <CallToActionButton
-                placeholder={t("createTask.cancel")}
-                type={CtaType.cancel}
-                onAction={props.close}
-              />
-              <CallToActionButton
-                placeholder={t("createTask.submit")}
-                onAction={() => {}}
-              />
-            </div>
-          </form>
-        </div>
+        </form>
       )}
     </div>
   );

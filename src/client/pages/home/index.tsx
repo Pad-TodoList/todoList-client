@@ -1,20 +1,18 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { useGetUser, useGetUserTasks } from "@todo-list/view-models";
-import styles from "./styles.module.scss";
-import { Props } from "./type.ts";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { useUserContext } from "@components/accountContext";
 import { ErrorBanner } from "@components/errorBanner";
 import { Loader } from "@common/loader";
 import { TaskList } from "./taskList";
+import { Props } from "./type";
+import styles from "./styles.module.scss";
 
 function Home(_: Props) {
   const { t } = useTranslation();
   const { setAccount } = useUserContext();
-  const navigate = useNavigate();
   const time = new Date().getHours();
   const {
     user,
@@ -29,9 +27,6 @@ function Home(_: Props) {
     getUserTasks,
     isRequestPending: isRequestTasksPending,
   } = useGetUserTasks();
-  const goToProfile = () => {
-    navigate("/profile");
-  };
 
   useEffect(() => {
     getUser(getAccessToken());
@@ -56,11 +51,6 @@ function Home(_: Props) {
               : t("homePage.titleNight")}
             {user.nickName}
           </h1>
-          <div className={styles.buttons}>
-            <button className={styles.button} onClick={goToProfile}>
-              {t("homePage.goToProfile")}
-            </button>
-          </div>
           {isRequestTasksPending ? <Loader /> : <TaskList tasks={tasks} />}
         </div>
       )}

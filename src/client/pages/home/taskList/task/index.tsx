@@ -5,16 +5,19 @@ import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { UseCases } from "@app/wrapper/type.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
+import { TrashIcon } from "@common/assets/trashIcon";
 import { Props } from "./types";
 import styles from "./styles.module.scss";
-import { TrashIcon } from "@common/assets/trashIcon";
+import { ErrorBanner } from "@components/errorBanner";
 
 function Task({ task, targetList, tasks, setTasks, setTargetList }: Props) {
   const { pushView } = useWrapperContext();
   const [draggedTask, setDraggedTask] = useState<Identifiable<T> | null>(null);
-  const { updateTask } = useUpdateTask();
+  const { updateTask, isRequestFailure: isRequestUpdateFailure } =
+    useUpdateTask();
   const tokens = getAccessToken();
-  const { deleteTask } = useDeleteTask();
+  const { deleteTask, isRequestFailure: isRequestDeleteFailure } =
+    useDeleteTask();
 
   const handleDragStart = (event: any, task: Identifiable<T>) => {
     setDraggedTask(task);
@@ -83,6 +86,16 @@ function Task({ task, targetList, tasks, setTasks, setTargetList }: Props) {
         pushView({ data: { task }, useCase: UseCases.RetrieveTask })
       }
     >
+      {isRequestDeleteFailure.status ||
+        (isRequestUpdateFailure.status && (
+          <ErrorBanner
+            message={
+              isRequestDeleteFailure.status
+                ? isRequestDeleteFailure.message
+                : isRequestUpdateFailure.message
+            }
+          />
+        ))}
       <p>{task.name}</p>
       <div
         className={styles.iconBox}
