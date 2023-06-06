@@ -27,8 +27,17 @@ function Wrapper() {
     [UseCases.CreateTask]: ({ addTask }: ViewModels[UseCases.CreateTask]) => (
       <CreateTask close={close} addTask={addTask} />
     ),
-    [UseCases.RetrieveTask]: ({ task }: ViewModels[UseCases.RetrieveTask]) => (
-      <RetrieveTask close={close} task={task} />
+    [UseCases.RetrieveTask]: ({
+      task,
+      taskList,
+      setTaskList,
+    }: ViewModels[UseCases.RetrieveTask]) => (
+      <RetrieveTask
+        close={close}
+        task={task}
+        taskList={taskList}
+        setTaskList={setTaskList}
+      />
     ),
   };
 

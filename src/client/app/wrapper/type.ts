@@ -15,7 +15,11 @@ interface ViewModels {
   [UseCases.Login]: NonNullable<unknown>;
   [UseCases.DeleteUser]: { user: Identifiable<User> };
   [UseCases.CreateTask]: { addTask(task: Identifiable<Task>): void };
-  [UseCases.RetrieveTask]: { task: Identifiable<Task> };
+  [UseCases.RetrieveTask]: {
+    task: Identifiable<Task>;
+    taskList: Identifiable<Task>[];
+    setTaskList(tasks: Identifiable<Task>[]): void;
+  };
 }
 
 export { UseCases, ViewModels };

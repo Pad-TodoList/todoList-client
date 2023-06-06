@@ -1,25 +1,27 @@
 import { useState } from "react";
 
-import { Identifiable, Task, Task as T, taskStatuses } from "@todo-list/dto";
+import { Identifiable, Task, taskStatuses } from "@todo-list/dto";
 import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { UseCases } from "@app/wrapper/type.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
+import { ErrorBanner } from "@components/errorBanner";
 import { TrashIcon } from "@common/assets/trashIcon";
 import { Props } from "./types";
 import styles from "./styles.module.scss";
-import { ErrorBanner } from "@components/errorBanner";
 
 function Task({ task, targetList, tasks, setTasks, setTargetList }: Props) {
   const { pushView } = useWrapperContext();
-  const [draggedTask, setDraggedTask] = useState<Identifiable<T> | null>(null);
+  const [draggedTask, setDraggedTask] = useState<Identifiable<Task> | null>(
+    null
+  );
   const { updateTask, isRequestFailure: isRequestUpdateFailure } =
     useUpdateTask();
   const tokens = getAccessToken();
   const { deleteTask, isRequestFailure: isRequestDeleteFailure } =
     useDeleteTask();
 
-  const handleDragStart = (event: any, task: Identifiable<T>) => {
+  const handleDragStart = (event: any, task: Identifiable<Task>) => {
     setDraggedTask(task);
     event.currentTarget.classList.add(styles.dragging);
   };
@@ -83,7 +85,10 @@ function Task({ task, targetList, tasks, setTasks, setTargetList }: Props) {
       onDrag={handleDrag}
       onDragEnd={handleDragEnd}
       onClick={() =>
-        pushView({ data: { task }, useCase: UseCases.RetrieveTask })
+        pushView({
+          data: { task, taskList: tasks, setTaskList: setTasks },
+          useCase: UseCases.RetrieveTask,
+        })
       }
     >
       {isRequestDeleteFailure.status ||

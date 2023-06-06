@@ -1,8 +1,9 @@
+import { useTranslation } from "react-i18next";
+
+import { TextInput } from "@common/textInput";
+import { taskStatuses } from "@todo-list/dto";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { TextInput } from "@common/textInput";
-import { useTranslation } from "react-i18next";
-import { taskStatuses } from "@todo-list/dto";
 
 function CreateTaskForm({ setTask, task }: Props) {
   const { t } = useTranslation();
@@ -49,12 +50,14 @@ function CreateTaskForm({ setTask, task }: Props) {
           }
         >
           <option value={taskStatuses.notStarted}>
-            {taskStatuses.notStarted}
+            {t(`taskStatuses.${taskStatuses.notStarted}`)}
           </option>
           <option value={taskStatuses.inProgress}>
-            {taskStatuses.inProgress}
+            {t(`taskStatuses.${taskStatuses.inProgress}`)}
           </option>
-          <option value={taskStatuses.finish}>{taskStatuses.finish}</option>
+          <option value={taskStatuses.finish}>
+            {t(`taskStatuses.${taskStatuses.finish}`)}
+          </option>
         </select>
       </div>
     </div>
