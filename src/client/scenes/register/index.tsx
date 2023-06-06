@@ -11,6 +11,7 @@ import { CloseIcon } from "@common/assets/closeIcon";
 import { Loader } from "@common/loader";
 import { CallToActionButton } from "@common/CallToActionButton";
 import { CtaType } from "@common/CallToActionButton/types.ts";
+import { ErrorBanner } from "@components/errorBanner";
 
 function Register(props: Props) {
   const { t } = useTranslation();
@@ -22,8 +23,13 @@ function Register(props: Props) {
     nickName: "",
     password: "",
   });
-  const { register, isRequestPending, isRequestSuccess, tokens } =
-    useRegister();
+  const {
+    register,
+    isRequestPending,
+    isRequestSuccess,
+    isRequestFailure,
+    tokens,
+  } = useRegister();
 
   React.useEffect(() => {
     if (isRequestSuccess) {
@@ -42,6 +48,9 @@ function Register(props: Props) {
           <CloseIcon className={styles.closeIcon} />
         </div>
       </div>
+      {isRequestFailure.message && (
+        <ErrorBanner message={isRequestFailure.message} />
+      )}
       {isRequestPending ? (
         <div className={styles.loader}>
           <Loader />
