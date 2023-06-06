@@ -1,0 +1,53 @@
+.task {
+  position: relative;
+  background-color: var(--color-white);
+  margin: 0.5rem 0 1rem;
+  padding: 0 0.5rem;
+  border-radius: 5px;
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  cursor: pointer;
+
+  &:active {
+    transform: rotate(5deg);
+  }
+
+  &:hover {
+    padding-right: 2rem;
+    transition: padding-right 0.2s linear;
+
+    .iconBox {
+      opacity: 1;
+      transition: opacity 0.2s linear;
+    }
+  }
+
+  p {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 20rem;
+  }
+}
+
+.iconBox {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  top: 50%;
+  transform: translateY(-40%);
+  cursor: pointer;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--color-red);
+
+  &:hover {
+    fill: var(--color-secondary);
+  }
+}

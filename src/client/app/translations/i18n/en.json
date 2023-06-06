@@ -24,7 +24,15 @@
     "landingPage": "Landing page"
   },
   "homePage": {
-    "title": "Home page"
+    "title": "Hello ",
+    "titleNight": "Good evening ",
+    "createTask":  "Add task",
+    "goToProfile": "Profile",
+    "lists": {
+      "notStarted": "Not started",
+      "inProgress": "In progress",
+      "finish": "Finish"
+    }
   },
   "profilePage": {
     "title": "Profile",
@@ -65,5 +73,34 @@
     "warning": "Are you sure you want to delete your account? This step is irreversible.",
     "confirm": "Confirm",
     "cancel": "Cancel"
+  },
+  "createTask": {
+    "title": "Create new task",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "form": {
+      "input_one": "Title",
+      "input_two": "Description",
+      "input_three": "Start date",
+      "input_four": "End date",
+      "input_five": "Status"
+    }
+  },
+  "retrieveTask": {
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "delete": "Delete",
+    "form": {
+      "input_one": "Title",
+      "input_two": "Description",
+      "input_three": "Start date",
+      "input_four": "End date",
+      "input_five": "Status"
+    }
+  },
+  "taskStatuses": {
+    "inProgress": "In progress",
+    "notStarted": "Not started",
+    "finish": "Finish"
   }
 }

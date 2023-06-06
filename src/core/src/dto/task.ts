@@ -1,9 +1,15 @@
+enum taskStatuses {
+  notStarted = "notStarted",
+  inProgress = "inProgress",
+  finish = "finish",
+}
+
 type Task = {
   name: string;
   description: string;
   startDate: string;
   endDate: string;
-  status: string;
+  status: taskStatuses;
   userId: string;
 };
 
@@ -12,8 +18,8 @@ const task: Task = {
   description: "",
   startDate: "",
   endDate: "",
-  status: "",
+  status: taskStatuses.notStarted,
   userId: "",
 };
 
-export { Task, task };
+export { Task, task, taskStatuses };
