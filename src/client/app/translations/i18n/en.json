@@ -38,9 +38,10 @@
     "title": "Profile",
     "deleteAccount": "Delete account",
     "updateAccount": "Update data",
+    "back": "Back",
     "disconnection": "Disconnection",
     "profileForm": {
-      "update": "Update user données",
+      "update": "Update user data",
       "input_one": "Nickname",
       "input_two": "Firstname",
       "input_three": "Lastname",

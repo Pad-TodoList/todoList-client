@@ -1,6 +1,7 @@
 enum CtaType {
   submit,
   cancel,
+  delete,
 }
 
 interface Props {
