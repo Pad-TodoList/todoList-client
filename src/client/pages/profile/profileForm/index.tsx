@@ -1,9 +1,11 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { useUpdateUser } from "@todo-list/view-models";
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { TextInput } from "@common/textInput";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { useState } from "react";
-import { useUpdateUser } from "@todo-list/view-models";
-import { useTranslation } from "react-i18next";
-import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 
 function ProfileForm(props: Props) {
   const { t } = useTranslation();
@@ -12,49 +14,47 @@ function ProfileForm(props: Props) {
   const tokens = getAccessToken();
   return (
     <div className={styles.profileForm}>
-      <div>
-        {t("profilePage.profileForm.input_one")}
-        <input
-          defaultValue={updatedUser.nickName}
-          onChange={(e) =>
-            setUpdatedUser({ ...updatedUser, nickName: e.target.value })
+      <div className={styles.item}>
+        <p>{t("profilePage.profileForm.input_one")}</p>
+        <TextInput
+          value={updatedUser.nickName}
+          setValue={(value) =>
+            setUpdatedUser({ ...updatedUser, nickName: value })
           }
         />
       </div>
-      <div>
-        {t("profilePage.profileForm.input_two")}
-        <input
-          defaultValue={updatedUser.firstName}
-          onChange={(e) =>
-            setUpdatedUser({ ...updatedUser, firstName: e.target.value })
+      <div className={styles.item}>
+        <p>{t("profilePage.profileForm.input_two")}</p>
+        <TextInput
+          value={updatedUser.firstName}
+          setValue={(value) =>
+            setUpdatedUser({ ...updatedUser, firstName: value })
           }
         />
       </div>
-      <div>
-        {t("profilePage.profileForm.input_three")}
-        <input
-          defaultValue={updatedUser.lastName}
-          onChange={(e) =>
-            setUpdatedUser({ ...updatedUser, lastName: e.target.value })
+      <div className={styles.item}>
+        <p>{t("profilePage.profileForm.input_three")}</p>
+        <TextInput
+          value={updatedUser.lastName}
+          setValue={(value) =>
+            setUpdatedUser({ ...updatedUser, lastName: value })
           }
         />
       </div>
-      <div>
-        {t("profilePage.profileForm.input_four")}
-        <input
-          type={"email"}
-          defaultValue={updatedUser.email}
-          onChange={(e) =>
-            setUpdatedUser({ ...updatedUser, email: e.target.value })
-          }
+      <div className={styles.item}>
+        <p>{t("profilePage.profileForm.input_four")}</p>
+        <TextInput
+          value={updatedUser.email}
+          setValue={(value) => setUpdatedUser({ ...updatedUser, email: value })}
         />
       </div>
       <button
+        className={styles.button}
         onClick={() => !isRequestPending && updateUser(updatedUser, tokens)}
       >
         {t("profilePage.profileForm.update")}
       </button>
-      {isRequestFailure && <div>{isRequestFailure.message}</div>}
+      {isRequestFailure && <p>{isRequestFailure.message}</p>}
     </div>
   );
 }

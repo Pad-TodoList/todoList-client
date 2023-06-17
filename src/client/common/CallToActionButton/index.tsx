@@ -12,6 +12,7 @@ function CallToActionButton({
       className={classNames(styles.callToActionButton, {
         [styles.callToActionButtonSubmit]: type === CtaType.submit,
         [styles.callToActionButtonCancel]: type === CtaType.cancel,
+        [styles.callToActionButtonDelete]: type === CtaType.delete,
       })}
       onClick={onAction}
       type={type === CtaType.submit ? "submit" : "button"}

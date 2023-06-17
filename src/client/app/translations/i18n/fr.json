@@ -38,6 +38,7 @@
     "title": "Profil",
     "deleteAccount": "Supprimer profil",
     "updateAccount": "Modifier les données",
+    "back": "Page précédente",
     "disconnection": "Se déconnecter",
     "profileForm": {
       "update": "Modifier les données",

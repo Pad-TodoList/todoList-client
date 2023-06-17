@@ -16,6 +16,18 @@
   }
 }
 
+.callToActionButtonDelete {
+  background-color: var(--color-red);
+  border: 3px solid var(--color-red);
+  color: var(--color-white);
+  font-weight: bold;
+
+  &:hover {
+    background-color: transparent;
+    color: var(--color-red);
+  }
+}
+
 .callToActionButtonCancel {
   background-color: transparent;
   border: none;
