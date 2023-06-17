@@ -6,3 +6,54 @@
   justify-content: flex-start;
   flex-direction: column;
 }
+
+.loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--color-white);
+  margin: 3rem 0 2rem;
+}
+
+.button {
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 12rem;
+
+  background-color: var(--color-primary);
+  border: 3px solid rgba(79, 46, 138, 0.55);
+  color: var(--color-white);
+  font-weight: bold;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.deleteAccount {
+  background-color: var(--color-red);
+  border: 3px solid rgba(255, 0, 0, 0.55);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
