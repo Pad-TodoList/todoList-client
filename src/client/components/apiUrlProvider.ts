@@ -1,7 +1,7 @@
 import {
   HttpClient,
   RequestConfig,
-} from "../../newCore/src/services/types/httpClient.ts";
+} from "../../todoList-client-core/src/services/types/httpClient.ts";
 
 function createApiUrlProvider(httpClient: HttpClient): HttpClient {
   return {

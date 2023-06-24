@@ -8,7 +8,7 @@ import { SelectLanguage } from "./selectLanguage";
 import { Routes } from "./routes";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useUserRetrieval } from "../../../newCore/src/viewModels/retrieveUser.ts";
+import { useUserRetrieval } from "../../../todoList-client-core/src/viewModels/retrieveUser.ts";
 
 function Landing(_: Props) {
   const {

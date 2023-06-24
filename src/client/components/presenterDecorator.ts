@@ -1,5 +1,5 @@
-import { Core, UseCases } from "../../newCore/src/core/main";
-import { EventDispatcher } from "../../newCore/src/events/main";
+import { Core, UseCases } from "../../todoList-client-core/src/core/main";
+import { EventDispatcher } from "../../todoList-client-core/src/events/main";
 
 function capitalize(str: string): Capitalize<keyof typeof UseCases> {
   return (str.charAt(0).toUpperCase() + str.slice(1)) as Capitalize<

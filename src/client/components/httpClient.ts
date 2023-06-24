@@ -3,7 +3,7 @@ import {
   HttpClient,
   HttpMethods,
   RequestConfig,
-} from "../../newCore/src/services/types/httpClient.ts";
+} from "../../todoList-client-core/src/services/types/httpClient.ts";
 
 function sendRequest<Response>(config: RequestConfig): Promise<Response> {
   const requestData =

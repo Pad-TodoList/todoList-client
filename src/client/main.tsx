@@ -4,17 +4,20 @@ import "@app/translations/i18n.ts";
 import { UserContextProvider } from "@components/accountContext";
 import "./index.scss";
 import axios from "axios";
-import { createSelector, createState } from "../newCore/src/state/main.ts";
+import {
+  createSelector,
+  createState,
+} from "../todoList-client-core/src/state/main.ts";
 import { applyMiddleware } from "redux";
 import dynamicMiddlewares from "redux-dynamic-middlewares-2";
-import { createEventDispatcher } from "../newCore/src/events/main.ts";
-import { createService } from "../newCore/src/services/main.ts";
+import { createEventDispatcher } from "../todoList-client-core/src/events/main.ts";
+import { createService } from "../todoList-client-core/src/services/main.ts";
 import { decoratePresenter } from "./components/presenterDecorator";
 import { createHttpClient } from "./components/httpClient";
 import { createApiUrlProvider } from "./components/apiUrlProvider";
-import { createCore } from "../newCore/src/core/main.ts";
+import { createCore } from "../todoList-client-core/src/core/main.ts";
 import { Provider } from "react-redux";
-import { CoreContext } from "../newCore/src/viewModels/context.ts";
+import { CoreContext } from "../todoList-client-core/src/viewModels/context.ts";
 
 axios.interceptors.request.use((config) => ({
   ...config,
