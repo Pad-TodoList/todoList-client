@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Identifiable, Task } from "@todo-list/dto";
-import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { Identifiable, Task } from "@todo-list/dto";
+import { useUpdateTask, useDeleteTask } from "@todo-list/view-models";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { CallToActionButton } from "@common/CallToActionButton";
 import { CtaType } from "@common/CallToActionButton/types.ts";

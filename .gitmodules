@@ -1,0 +1,3 @@
+[submodule "src/todoList-client-core"]
+	path = src/todoList-client-core
+	url = git@github.com:Pad-TodoList/todoList-client-core.git

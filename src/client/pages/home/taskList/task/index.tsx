@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { Identifiable, Task, taskStatuses } from "@todo-list/dto";
-import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
+import { Task, taskStatuses, Identifiable } from "@todo-list/dto";
+import { useUpdateTask, useDeleteTask } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { UseCases } from "@app/wrapper/type.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";

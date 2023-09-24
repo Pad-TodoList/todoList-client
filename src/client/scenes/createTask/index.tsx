@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { Task, taskStatuses } from "@todo-list/dto";
 import { useCreateTask } from "@todo-list/view-models";
-import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { Loader } from "@common/loader";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { CallToActionButton } from "@common/CallToActionButton";
