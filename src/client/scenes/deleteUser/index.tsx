@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { useDeleteUser } from "@todo-list/view-models";
 import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { useDeleteUser } from "@todo-list/view-models";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { Loader } from "@common/loader";
 import { CallToActionButton } from "@common/CallToActionButton";

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
-import { TextInput } from "@common/textInput";
 import { taskStatuses } from "@todo-list/dto";
+import { TextInput } from "@common/textInput";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
 

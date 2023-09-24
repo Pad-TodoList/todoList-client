@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 
+import { TextInput } from "@common/textInput";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { TextInput } from "@common/textInput";
 
 function RegisterForm({ setUser, user }: Props) {
   const { t } = useTranslation();
