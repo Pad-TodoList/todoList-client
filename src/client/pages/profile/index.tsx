@@ -3,22 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
 
-import { useGetUser } from "@todo-list/view-models";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { UseCases } from "@app/wrapper/type.ts";
 import { ProfileForm } from "./profileForm";
-import { useUserContext } from "../../components/accountContext";
+import { useUserContext } from "@components/accountContext";
 import { Loader } from "@common/loader";
 import { SelectLanguage } from "./selectLanguage";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
+import { useUserRetrieval } from "../../../todoList-client-core/src/viewModels/retrieveUser.ts";
 
 function Profile(_: Props) {
   const navigate = useNavigate();
   const { pushView } = useWrapperContext();
   const { account, setAccount } = useUserContext();
   const { t } = useTranslation();
-  const { user, getUser, isRequestPending } = useGetUser();
+  // const { user, getUser, isRequestPending } = useGetUser();
+  const { isRequestPending, user, retrieveUser } = useUserRetrieval({
+    accessToken: localStorage.getItem("pad-todolist-userToken") ?? "",
+    id: localStorage.getItem("pad-todolist-userId") ?? "",
+  });
   const disconnection = () => {
     localStorage.removeItem("pad-todolist-userId");
     localStorage.removeItem("pad-todolist-userToken");
@@ -28,7 +32,7 @@ function Profile(_: Props) {
 
   useEffect(() => {
     !account &&
-      getUser({
+      retrieveUser({
         accessToken: localStorage.getItem("pad-todolist-userToken") ?? "",
         id: localStorage.getItem("pad-todolist-userId") ?? "",
       });

@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Identifiable, Task } from "@todo-list/dto";
-import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
-import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { CallToActionButton } from "@common/CallToActionButton";
 import { CtaType } from "@common/CallToActionButton/types.ts";
 import { RetrieveTaskForm } from "./retrieveTaskForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
+import { getAccessToken } from "../../../todoList-client-core/src/utils/getAccessToken.ts";
+import { Identifiable } from "../../../todoList-client-core/src/dto/identifiable.ts";
+import { Task } from "../../../todoList-client-core/src/dto/task.ts";
+import { useDeleteTask } from "../../../todoList-client-core/src/viewModels/deleteTask.ts";
+import { useUpdateTask } from "../../../todoList-client-core/src/viewModels/updateTask.ts";
 
 function RetrieveTask(props: Props) {
   const { t } = useTranslation();

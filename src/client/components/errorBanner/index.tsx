@@ -1,6 +1,7 @@
+import { useState } from "react";
+
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { useState } from "react";
 
 function ErrorBanner({ message }: Props) {
   const [displayBanner, setDisplayBanner] = useState(true);

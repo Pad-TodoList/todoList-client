@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 
 import { TextInput } from "@common/textInput";
-import { taskStatuses } from "@todo-list/dto";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
+import { taskStatuses } from "../../../../todoList-client-core/src/dto/task.ts";
 
 function CreateTaskForm({ setTask, task }: Props) {
   const { t } = useTranslation();

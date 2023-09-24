@@ -24,10 +24,11 @@
     "landingPage": "Landing page"
   },
   "homePage": {
-    "title": "Hello ",
+    "titleDay": "Hello ",
     "titleNight": "Good evening ",
     "createTask":  "Add task",
     "goToProfile": "Profile",
+    "errorUser": "Can't get user data",
     "lists": {
       "notStarted": "Not started",
       "inProgress": "In progress",

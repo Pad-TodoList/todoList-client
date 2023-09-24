@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import { useRegister } from "@todo-list/view-models";
-import { User } from "@todo-list/dto";
 import { RegisterForm } from "./registerForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
@@ -12,6 +10,8 @@ import { Loader } from "@common/loader";
 import { CallToActionButton } from "@common/CallToActionButton";
 import { CtaType } from "@common/CallToActionButton/types.ts";
 import { ErrorBanner } from "@components/errorBanner";
+import { User } from "../../../todoList-client-core/src/dto/user.ts";
+import { useRegister } from "../../../todoList-client-core/src/viewModels/register.ts";
 
 function Register(props: Props) {
   const { t } = useTranslation();

@@ -1,14 +1,19 @@
 import { useState } from "react";
 
-import { Identifiable, Task, taskStatuses } from "@todo-list/dto";
-import { useDeleteTask, useUpdateTask } from "@todo-list/view-models";
-import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { UseCases } from "@app/wrapper/type.ts";
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { ErrorBanner } from "@components/errorBanner";
 import { TrashIcon } from "@common/assets/trashIcon";
 import { Props } from "./types";
 import styles from "./styles.module.scss";
+import {
+  Task,
+  taskStatuses,
+} from "../../../../../todoList-client-core/src/dto/main.ts";
+import { Identifiable } from "../../../../../todoList-client-core/src/dto/identifiable.ts";
+import { useUpdateTask } from "../../../../../todoList-client-core/src/viewModels/updateTask.ts";
+import { getAccessToken } from "../../../../../todoList-client-core/src/utils/getAccessToken.ts";
+import { useDeleteTask } from "../../../../../todoList-client-core/src/viewModels/deleteTask.ts";
 
 function Task({ task, targetList, tasks, setTasks, setTargetList }: Props) {
   const { pushView } = useWrapperContext();

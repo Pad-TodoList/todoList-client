@@ -28,6 +28,7 @@
     "titleNight": "Bonsoir ",
     "createTask":  "Ajouter une tâche",
     "goToProfile": "Profil",
+    "errorUser": "Erreur avec la récupération des données de l'utilisateur",
     "lists": {
       "notStarted": "Pas commencées",
       "inProgress": "En cours",

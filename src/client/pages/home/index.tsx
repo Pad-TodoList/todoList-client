@@ -1,26 +1,30 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useGetUser, useGetUserTasks } from "@todo-list/view-models";
-import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { useUserContext } from "@components/accountContext";
 import { ErrorBanner } from "@components/errorBanner";
 import { Loader } from "@common/loader";
 import { TaskList } from "./taskList";
 import { Props } from "./type";
 import styles from "./styles.module.scss";
+import { useGetUserTasks } from "../../../todoList-client-core/src/viewModels/getUserTasks.ts";
+import { getAccessToken } from "../../../todoList-client-core/src/utils/getAccessToken.ts";
+import { useUserRetrieval } from "../../../todoList-client-core/src/viewModels/retrieveUser.ts";
 
 function Home(_: Props) {
   const { t } = useTranslation();
   const { setAccount } = useUserContext();
   const time = new Date().getHours();
   const {
-    user,
-    getUser,
-    isRequestFailure,
     isRequestPending,
+    isRequestFailure,
     isRequestSuccess,
-  } = useGetUser();
+    user,
+    retrieveUser,
+  } = useUserRetrieval({
+    accessToken: localStorage.getItem("pad-todolist-userToken") ?? "",
+    id: localStorage.getItem("pad-todolist-userId") ?? "",
+  });
 
   const {
     tasks,
@@ -29,16 +33,14 @@ function Home(_: Props) {
   } = useGetUserTasks();
 
   useEffect(() => {
-    getUser(getAccessToken());
+    retrieveUser(getAccessToken());
     getUserTasks(getAccessToken());
     isRequestSuccess && setAccount(user);
   }, []);
 
   return (
     <div className={styles.home}>
-      {isRequestFailure.message && (
-        <ErrorBanner message={isRequestFailure.message} />
-      )}
+      {isRequestFailure && <ErrorBanner message={t("homePage.errorUser")} />}
       {isRequestPending ? (
         <div className={styles.loader}>
           <Loader />
