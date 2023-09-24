@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useUpdateUser } from "@todo-list/view-models";
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
 import { TextInput } from "@common/textInput";
 import { Props } from "./types.ts";
 import styles from "./styles.module.scss";
-import { useUpdateUser } from "../../../../todoList-client-core/src/viewModels/updateUser.ts";
-import { getAccessToken } from "../../../../todoList-client-core/src/utils/getAccessToken.ts";
 
 function ProfileForm(props: Props) {
   const { t } = useTranslation();

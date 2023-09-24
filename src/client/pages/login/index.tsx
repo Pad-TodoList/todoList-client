@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
+import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 
 import { useWrapperContext } from "@app/wrapper/wrapper.tsx";
 import { UseCases } from "@app/wrapper/type.ts";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import classNames from "classnames";
-import { useNavigate } from "react-router-dom";
 
 function Login(_: Props) {
   const { pushView } = useWrapperContext();

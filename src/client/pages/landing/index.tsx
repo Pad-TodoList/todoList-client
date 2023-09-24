@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import { useCheckApi } from "@todo-list/view-models";
 import { Loader } from "@common/loader";
 import { ErrorServer } from "./errorServer";
 import { Title } from "./title";
@@ -7,7 +8,6 @@ import { SelectLanguage } from "./selectLanguage";
 import { Routes } from "./routes";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { useCheckApi } from "../../../todoList-client-core/src/viewModels/checkApi.ts";
 
 function Landing(_: Props) {
   const {

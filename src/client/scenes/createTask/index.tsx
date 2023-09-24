@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { Task, taskStatuses } from "@todo-list/dto";
+import { useCreateTask } from "@todo-list/view-models";
 import { Loader } from "@common/loader";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { CallToActionButton } from "@common/CallToActionButton";
@@ -8,12 +11,6 @@ import { CtaType } from "@common/CallToActionButton/types.ts";
 import { CreateTaskForm } from "./createTaskForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { getAccessToken } from "../../../todoList-client-core/src/utils/getAccessToken.ts";
-import {
-  Task,
-  taskStatuses,
-} from "../../../todoList-client-core/src/dto/task.ts";
-import { useCreateTask } from "../../../todoList-client-core/src/viewModels/createTasks.ts";
 
 function CreateTask(props: Props) {
   const { t } = useTranslation();

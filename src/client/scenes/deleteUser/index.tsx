@@ -1,14 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { getAccessToken } from "@todo-list/utils/getAccessToken.ts";
+import { useDeleteUser } from "@todo-list/view-models";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { Loader } from "@common/loader";
 import { CallToActionButton } from "@common/CallToActionButton";
 import { CtaType } from "@common/CallToActionButton/types.ts";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { getAccessToken } from "../../../todoList-client-core/src/utils/getAccessToken.ts";
-import { useDeleteUser } from "../../../todoList-client-core/src/viewModels/deleteUser.ts";
 
 function DeleteUser(props: Props) {
   const { t } = useTranslation();

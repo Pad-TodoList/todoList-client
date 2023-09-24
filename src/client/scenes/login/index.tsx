@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
+import { User } from "@todo-list/dto";
+import { useLogin } from "@todo-list/view-models";
 import { CloseIcon } from "@common/assets/closeIcon";
 import { Loader } from "@common/loader";
 import { CallToActionButton } from "@common/CallToActionButton";
@@ -10,8 +12,6 @@ import { ErrorBanner } from "@components/errorBanner";
 import { LoginForm } from "./loginForm";
 import { Props } from "./type.ts";
 import styles from "./styles.module.scss";
-import { User } from "../../../todoList-client-core/src/dto/user.ts";
-import { useLogin } from "../../../todoList-client-core/src/viewModels/login.ts";
 
 function Login(props: Props) {
   const { t } = useTranslation();

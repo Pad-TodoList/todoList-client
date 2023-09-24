@@ -25,9 +25,13 @@
       "@scenes/*": ["src/client/scenes/*"],
       "@common/*": ["src/client/common/*"],
       "@components/*": ["src/client/components/*"],
-      "@todo-list/dto": ["src/core/src/dto/main.ts"],
-      "@todo-list/view-models": ["src/core/src/viewModels/main.ts"],
-      "@todo-list/utils/*": ["src/core/src/utils/*"]
+      "@todo-list/dto": ["src/todolist-client-core/src/dto/main.ts"],
+      "@todo-list/view-models": ["src/todolist-client-core/src/viewModels/main.ts"],
+      "@todo-list/utils/*": ["src/todolist-client-core/src/utils/*"],
+      "@todo-list/core": ["src/todolist-client-core/src/core/main.ts"],
+      "@todo-list/events": ["src/todolist-client-core/src/events/main.ts"],
+      "@todo-list/services": ["src/todolist-client-core/src/services/main.ts"],
+      "@todo-list/state": ["src/todolist-client-core/src/state/main.ts"]
     }
   },
   "include": [
