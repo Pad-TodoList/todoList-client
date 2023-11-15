@@ -675,9 +675,9 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
-"@jiangweiye/tsconfig@*":
+"@jiangweiye/tsconfig@0.0.6":
   version "0.0.6"
-  resolved "https://registry.npmjs.org/@jiangweiye/tsconfig/-/tsconfig-0.0.6.tgz"
+  resolved "https://registry.yarnpkg.com/@jiangweiye/tsconfig/-/tsconfig-0.0.6.tgz#e1692050de3377eed65698df1cb971a3bb9606df"
   integrity sha512-90AALqOZucmK0lEagqvITYFUzEOrsvr5lx7wriv1LmIbrlsX80OSWBEHm1eD+bo2AHDUyRuFmnVCJGMP+PE0DQ==
 
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
