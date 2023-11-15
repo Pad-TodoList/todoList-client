@@ -31,8 +31,11 @@ function handleFailure(
 const reduceState = resetState(
   initialState,
   createStateReducer(initialState, {
+    // @ts-ignore
     [events.retrieveRoutesRequested]: handleRequest,
+    // @ts-ignore
     [events.retrieveRoutesSucceeded]: handleSuccess,
+    // @ts-ignore
     [events.retrieveRoutesFailed]: handleFailure,
   }),
   []

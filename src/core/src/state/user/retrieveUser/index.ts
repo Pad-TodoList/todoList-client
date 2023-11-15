@@ -81,8 +81,11 @@ function handleFailure(
 const reduceState = resetState(
   initialState,
   createStateReducer(initialState, {
+    // @ts-ignore
     [events.retrieveUserRequested]: handleRequest,
+    // @ts-ignore
     [events.retrieveUserSucceeded]: handleSuccess,
+    // @ts-ignore
     [events.retrieveUserFailed]: handleFailure,
   }),
   []
