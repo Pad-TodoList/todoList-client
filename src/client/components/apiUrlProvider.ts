@@ -1,7 +1,4 @@
-import {
-  HttpClient,
-  RequestConfig,
-} from "../../todoList-client-core/src/services/types/httpClient.ts";
+import { HttpClient, RequestConfig } from "@todo-list/services";
 
 function createApiUrlProvider(httpClient: HttpClient): HttpClient {
   return {
